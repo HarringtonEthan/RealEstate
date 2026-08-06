@@ -33,9 +33,15 @@ MAX_SIGNAL_AGE_DAYS = 30        # intent leads older than this are auto-rejected
 MAX_QUALIFY_PER_RUN = 10        # cap expensive qualifier calls per run
 
 # --- Sources ------------------------------------------------------------------
-# Reddit: public JSON endpoints, low volume, descriptive User-Agent.
-# For sustained use, register a script app at reddit.com/prefs/apps and set
-# REDDIT_CLIENT_ID / REDDIT_CLIENT_SECRET to use the official OAuth API instead.
+# Reddit locked down its public www.reddit.com/*.json endpoints (2023+) — they
+# now 403 almost all automated requests regardless of User-Agent. The
+# sanctioned, free fix is a read-only OAuth "script" app: register one at
+# https://www.reddit.com/prefs/apps (free, no login required by the tool
+# itself) and set these two env vars. Without them, the adapter falls back to
+# the public endpoint, which is likely to keep getting blocked.
+REDDIT_CLIENT_ID = os.environ.get("REDDIT_CLIENT_ID", "")
+REDDIT_CLIENT_SECRET = os.environ.get("REDDIT_CLIENT_SECRET", "")
+
 REDDIT_SUBREDDITS = [
     "raleigh",
     "triangle",
