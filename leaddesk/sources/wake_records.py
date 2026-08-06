@@ -48,7 +48,10 @@ def fetch_recent_renovation_permits() -> list[dict]:
     that part.
     """
     cutoff = (datetime.now(timezone.utc) - timedelta(days=config.RENOVATION_LOOKBACK_DAYS))
-    cutoff_ms = int(cutoff.timestamp() * 1000)
+    # This ArcGIS service rejects epoch-millisecond integers for Date-field
+    # comparisons ("Cannot perform query. Invalid query parameters.") — it
+    # needs an ISO date string literal instead. Confirmed via scripts/probe_records.py.
+    cutoff_str = cutoff.strftime("%Y-%m-%d")
     date_field = config.RALEIGH_PERMIT_FIELDS["issue_date"]
     desc_field = config.RALEIGH_PERMIT_FIELDS["description"]
     value_field = config.RALEIGH_PERMIT_FIELDS["valuation"]
@@ -57,7 +60,7 @@ def fetch_recent_renovation_permits() -> list[dict]:
         f"UPPER({desc_field}) LIKE '%{kw.upper()}%'" for kw in config.RENOVATION_KEYWORDS
     )
     where = (
-        f"{date_field} >= {cutoff_ms} AND {value_field} >= {config.RENOVATION_MIN_VALUE} "
+        f"{date_field} >= '{cutoff_str}' AND {value_field} >= {config.RENOVATION_MIN_VALUE} "
         f"AND ({keyword_clause})"
     )
 
