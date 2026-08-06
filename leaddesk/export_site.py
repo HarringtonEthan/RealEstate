@@ -13,8 +13,12 @@ from .brief import STAGE_LABELS, TYPE_LABELS
 
 
 def export(conn) -> str:
+    # MLS-licensed leads are held back from the public website by default —
+    # see config.PUBLISH_MLS_LEADS_TO_SITE. They're still fully visible in the
+    # local Markdown brief (brief.py) and `leaddesk status`.
+    mls_filter = "" if config.PUBLISH_MLS_LEADS_TO_SITE else "AND mls_licensed=0"
     leads = conn.execute(
-        "SELECT * FROM leads WHERE stage NOT IN ('REJECTED','INVALID') "
+        f"SELECT * FROM leads WHERE stage NOT IN ('REJECTED','INVALID') {mls_filter} "
         "ORDER BY lead_score DESC, date_discovered DESC"
     ).fetchall()
 

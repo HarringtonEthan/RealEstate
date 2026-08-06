@@ -1,10 +1,13 @@
 """Command-line interface.
 
   python -m leaddesk init-db        create the local database
-  python -m leaddesk run-once       full pipeline: fetch -> triage -> qualify -> brief -> site
+  python -m leaddesk run-once       full pipeline: sources -> score -> brief -> site
   python -m leaddesk brief          regenerate today's brief from the database
   python -m leaddesk export-site    regenerate the website data from the database
   python -m leaddesk status         pipeline counts and spend
+
+Active sources are controlled by config.ENABLE_REDDIT_SOURCE /
+ENABLE_RECORDS_SOURCE / ENABLE_MLS_SOURCE.
 """
 
 import argparse
@@ -12,71 +15,92 @@ import sys
 
 from . import brief as brief_mod
 from . import config, db, export_site
-from .agents import flip_scanner, qualifier, triage
+from .agents import flip_scanner, listing_scout, qualifier, triage
 from .sources import reddit
 
 
 def cmd_init_db(_args):
     conn = db.connect()
     conn.close()
+    config.MLS_IMPORT_DIR.mkdir(exist_ok=True)
     print(f"Database ready at {config.DB_PATH}")
+    print(f"MLS import folder ready at {config.MLS_IMPORT_DIR} — drop your MLS export CSVs there")
 
 
 def cmd_run_once(_args):
-    if not config.ANTHROPIC_API_KEY:
-        print("ERROR: ANTHROPIC_API_KEY is not set. Add it to your environment or .env.")
-        sys.exit(1)
     conn = db.connect()
     db.log_event(conn, "run_started", agent="orchestrator")
-
-    print("[1/6] Fetching public posts (Reddit)…")
-    items = reddit.fetch_new_posts()
-    errors = [i["_error"] for i in items if "_error" in i]
-    items = [i for i in items if "_error" not in i]
-    for e in errors:
-        print(f"      warning: {e}")
-    if not items and errors:
-        print("ERROR: no posts could be fetched from any source (network blocked or Reddit "
-              "unavailable). Leaving the website data untouched.")
-        sys.exit(2)
-    fresh = [i for i in items if db.mark_seen(conn, i["item_key"])]
-    print(f"      {len(items)} posts pulled, {len(fresh)} not seen before")
-
-    print("[2/6] Triage (fast model)…")
-    candidates = triage.triage(conn, fresh)
-    print(f"      {len(candidates)} candidate(s) kept, {len(fresh) - len(candidates)} rejected")
-
-    candidates = candidates[: config.MAX_QUALIFY_PER_RUN]
-    print(f"[3/6] Qualifying {len(candidates)} candidate(s) (reasoning model)…")
     qualified = 0
-    for item in candidates:
-        lead = qualifier.qualify(conn, item)
-        if lead and lead["stage"] in ("QUALIFIED", "HIGH_PRIORITY"):
-            qualified += 1
-            print(f"      ✓ {lead['lead_type']} · {lead.get('city') or '?'} · score {lead['lead_score']}")
-        elif lead:
-            print(f"      ✗ rejected: {lead['rejection_reason']}")
+    step_n, total_steps = 1, sum([config.ENABLE_REDDIT_SOURCE, config.ENABLE_RECORDS_SOURCE,
+                                  config.ENABLE_MLS_SOURCE]) + 2
 
-    print("[4/6] Scanning public records for renovation/flip signals (free — no AI calls)…")
-    try:
-        flip_leads = flip_scanner.scan(conn)
-        found = sum(1 for l in flip_leads if l["stage"] in ("QUALIFIED", "RESEARCHING"))
-        print(f"      {found} property signal(s) found")
-        qualified += sum(1 for l in flip_leads if l["stage"] == "QUALIFIED")
-    except Exception as exc:
-        print(f"      warning: records scan failed ({exc}); continuing without it")
-        db.log_event(conn, "agent_error", agent="flip_scanner", detail={"error": str(exc)})
+    if config.ENABLE_REDDIT_SOURCE:
+        if not config.ANTHROPIC_API_KEY:
+            print("ERROR: ANTHROPIC_API_KEY is not set (required for the Reddit intent source).")
+            sys.exit(1)
+        print(f"[{step_n}/{total_steps}] Fetching public posts (Reddit)…")
+        items = reddit.fetch_new_posts()
+        errors = [i["_error"] for i in items if "_error" in i]
+        items = [i for i in items if "_error" not in i]
+        for e in errors:
+            print(f"      warning: {e}")
+        fresh = [i for i in items if db.mark_seen(conn, i["item_key"])] if items else []
+        print(f"      {len(items)} posts pulled, {len(fresh)} not seen before")
 
-    print("[5/6] Writing daily brief…")
+        candidates = triage.triage(conn, fresh)
+        print(f"      triage kept {len(candidates)}/{len(fresh)}")
+
+        candidates = candidates[: config.MAX_QUALIFY_PER_RUN]
+        for item in candidates:
+            lead = qualifier.qualify(conn, item)
+            if lead and lead["stage"] in ("QUALIFIED", "HIGH_PRIORITY"):
+                qualified += 1
+                print(f"      ✓ {lead['lead_type']} · {lead.get('city') or '?'} · score {lead['lead_score']}")
+            elif lead:
+                print(f"      ✗ rejected: {lead['rejection_reason']}")
+        step_n += 1
+    else:
+        print("[skipped] Reddit source is off (config.ENABLE_REDDIT_SOURCE = False)")
+
+    if config.ENABLE_RECORDS_SOURCE:
+        print(f"[{step_n}/{total_steps}] Scanning Wake County / Raleigh public records "
+              f"(free — no AI calls)…")
+        try:
+            flip_leads = flip_scanner.scan(conn)
+            found = sum(1 for l in flip_leads if l["stage"] in ("QUALIFIED", "RESEARCHING"))
+            qualified += sum(1 for l in flip_leads if l["stage"] == "QUALIFIED")
+            print(f"      {found} property signal(s) found")
+        except Exception as exc:
+            print(f"      warning: records scan failed ({exc}); continuing without it")
+            db.log_event(conn, "agent_error", agent="flip_scanner", detail={"error": str(exc)})
+        step_n += 1
+
+    if config.ENABLE_MLS_SOURCE:
+        print(f"[{step_n}/{total_steps}] Reading your MLS export "
+              f"(free — no AI calls)…")
+        try:
+            mls_leads, mls_warnings = listing_scout.scan(conn)
+            for w in mls_warnings:
+                print(f"      warning: {w}")
+            found = sum(1 for l in mls_leads if l["stage"] in ("QUALIFIED", "HIGH_PRIORITY"))
+            qualified += found
+            print(f"      {found} expired/withdrawn listing lead(s) found")
+        except Exception as exc:
+            print(f"      warning: MLS import failed ({exc}); continuing without it")
+            db.log_event(conn, "agent_error", agent="listing_scout", detail={"error": str(exc)})
+        step_n += 1
+
+    print(f"[{step_n}/{total_steps}] Writing daily brief…")
     path = brief_mod.generate(conn)
     print(f"      {path}")
+    step_n += 1
 
-    print("[6/6] Exporting website data…")
+    print(f"[{step_n}/{total_steps}] Exporting website data…")
     site = export_site.export(conn)
     print(f"      {site}")
 
     spend = db.spend_today(conn)
-    print(f"\nDone. {qualified} qualified lead(s) today · spend ${spend:.2f}"
+    print(f"\nDone. {qualified} qualified/high-priority lead(s) today · spend ${spend:.2f}"
           + (f" · ${spend / qualified:.2f}/qualified lead" if qualified else ""))
     db.log_event(conn, "run_finished", agent="orchestrator",
                  detail={"qualified": qualified, "spend_usd": round(spend, 4)})
@@ -97,7 +121,11 @@ def cmd_status(_args):
     print("Pipeline:")
     for row in conn.execute("SELECT stage, COUNT(*) c FROM leads GROUP BY stage ORDER BY c DESC"):
         print(f"  {row['stage']:<15} {row['c']}")
-    print(f"Spend today: ${db.spend_today(conn):.2f} (budget ${config.DAILY_BUDGET_USD:.2f})")
+    mls_count = conn.execute("SELECT COUNT(*) c FROM leads WHERE mls_licensed=1").fetchone()["c"]
+    if mls_count and not config.PUBLISH_MLS_LEADS_TO_SITE:
+        print(f"\n{mls_count} MLS-licensed lead(s) — visible here and in briefs/, "
+              f"held back from the public website (config.PUBLISH_MLS_LEADS_TO_SITE=False)")
+    print(f"\nSpend today: ${db.spend_today(conn):.2f} (budget ${config.DAILY_BUDGET_USD:.2f})")
 
 
 def main():

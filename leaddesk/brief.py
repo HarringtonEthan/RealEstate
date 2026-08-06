@@ -16,7 +16,8 @@ TYPE_LABELS = {
     "buyer": "Buyer", "first_time_buyer": "First-time buyer", "move_up_buyer": "Move-up buyer",
     "downsizer": "Downsizer", "seller": "Seller", "relocation": "Relocation",
     "investor": "Investor", "land": "Land", "fsbo": "FSBO", "expired": "Expired listing",
-    "renovation_watch": "Renovation watch", "other": "Other",
+    "renovation_watch": "Renovation watch", "withdrawn": "Withdrawn listing",
+    "other": "Other",
 }
 
 

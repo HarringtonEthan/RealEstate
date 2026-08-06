@@ -4,3 +4,5 @@ __pycache__/
 leaddesk.db
 leaddesk.db-*
 .venv/
+briefs/
+mls_exports/*.csv

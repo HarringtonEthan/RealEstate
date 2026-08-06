@@ -35,7 +35,7 @@
     if (lead.type === "renovation_watch") return "reno";
     if (lead.type === "relocation") return "relocation";
     if (lead.type === "investor") return "investor";
-    if (["seller", "fsbo", "expired", "downsizer", "land"].includes(lead.type)) return "sell";
+    if (["seller", "fsbo", "expired", "withdrawn", "downsizer", "land"].includes(lead.type)) return "sell";
     return "buy";
   };
 

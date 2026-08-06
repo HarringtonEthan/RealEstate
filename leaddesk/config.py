@@ -32,6 +32,13 @@ HIGH_PRIORITY_THRESHOLD = 80
 MAX_SIGNAL_AGE_DAYS = 30        # intent leads older than this are auto-rejected as stale
 MAX_QUALIFY_PER_RUN = 10        # cap expensive qualifier calls per run
 
+# --- Active sources ------------------------------------------------------------
+# One place to see/toggle what actually runs. Reddit is off by default —
+# focus is on MLS-licensed data and public property records.
+ENABLE_REDDIT_SOURCE = os.environ.get("LEADDESK_ENABLE_REDDIT", "0") == "1"
+ENABLE_RECORDS_SOURCE = os.environ.get("LEADDESK_ENABLE_RECORDS", "1") == "1"
+ENABLE_MLS_SOURCE = os.environ.get("LEADDESK_ENABLE_MLS", "1") == "1"
+
 # --- Sources ------------------------------------------------------------------
 # Reddit locked down its public www.reddit.com/*.json endpoints (2023+) — they
 # now 403 almost all automated requests regardless of User-Agent. The
@@ -109,3 +116,21 @@ RENOVATION_KEYWORDS = [
 RENOVATION_LOOKBACK_DAYS = 120
 RENOVATION_MIN_VALUE = 15000       # ignore trivial permits (fences, water heaters)
 RENOVATION_QUALIFY_THRESHOLD = 55  # below this, not worth Diane's time
+
+# --- MLS-licensed data: expired / withdrawn listings ---------------------------
+# Diane exports these herself from her MLS (Matrix) — the tool never logs in
+# and never touches her MLS credentials. Drop exported CSV files in
+# MLS_IMPORT_DIR; see mls_export_template.csv at the repo root for the
+# expected shape (column names are matched flexibly — see mls_import.py).
+# Zero AI cost: scoring is arithmetic (scoring_mls.py), same as records.
+MLS_IMPORT_DIR = REPO_ROOT / "mls_exports"
+MLS_EXPIRED_MAX_AGE_DAYS = 180     # ignore listings that came off market longer ago than this
+MLS_QUALIFY_THRESHOLD = 55
+MLS_HIGH_PRIORITY_THRESHOLD = 80
+
+# MLS-derived leads are held back from the public website by default until
+# Diane confirms with Triangle MLS / her broker-in-charge that showing
+# summarized derived info (not raw MLS data) on her own unauthenticated site
+# is fine under her data license. Until then they appear in the local
+# Markdown brief and `leaddesk status` only. Flip to True once confirmed.
+PUBLISH_MLS_LEADS_TO_SITE = os.environ.get("LEADDESK_PUBLISH_MLS", "0") == "1"
