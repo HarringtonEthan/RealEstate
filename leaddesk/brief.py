@@ -61,7 +61,7 @@ def generate(conn) -> str:
 
     config.BRIEFS_DIR.mkdir(exist_ok=True)
     path = config.BRIEFS_DIR / f"{today}.md"
-    path.write_text("\n".join(lines))
+    path.write_text("\n".join(lines), encoding="utf-8")
     return str(path)
 
 

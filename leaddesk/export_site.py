@@ -53,8 +53,8 @@ def export(conn) -> str:
 def write_site_data(data: dict) -> str:
     config.SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
     js_path = config.SITE_DATA_DIR / "leads.js"
-    js_path.write_text("window.LEAD_DATA = " + json.dumps(data, indent=2) + ";\n")
-    (config.SITE_DATA_DIR / "leads.json").write_text(json.dumps(data, indent=2))
+    js_path.write_text("window.LEAD_DATA = " + json.dumps(data, indent=2) + ";\n", encoding="utf-8")
+    (config.SITE_DATA_DIR / "leads.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
     return str(js_path)
 
 
