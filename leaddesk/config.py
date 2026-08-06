@@ -51,3 +51,55 @@ REDDIT_USER_AGENT = os.environ.get(
 )
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+
+# --- Public records: renovation / flip watch (Wake County + City of Raleigh) --
+# Zero AI cost by design — permit and tax records are structured data, so
+# matching and scoring are pure arithmetic (see scoring_records.py).
+#
+# NOTE ON FIELD NAMES: these ArcGIS REST endpoints and field names follow the
+# standard shape Wake County iMAPS and the City of Raleigh's ArcGIS Hub use,
+# but have not yet been confirmed against the live schema (scripts/probe_records.py
+# discovers the real ones; its results supersede these). Everything below is a
+# single point of edit — if a field name is wrong, fix it here, not in the code
+# that uses it.
+WAKE_PARCELS_URL = os.environ.get(
+    "LEADDESK_WAKE_PARCELS_URL",
+    "https://maps.wakegov.com/arcgis/rest/services/Property/Parcels/MapServer/0",
+)
+RALEIGH_PERMITS_URL = os.environ.get(
+    "LEADDESK_RALEIGH_PERMITS_URL",
+    "https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/"
+    "Building_Permits/FeatureServer/0",
+)
+
+WAKE_PARCEL_FIELDS = {
+    "pin": "PIN_NUM",
+    "owner": "OWNER",
+    "mail_address": "MAIL_ADD1",
+    "mail_city": "MAIL_CITY",
+    "mail_state": "MAIL_STATE",
+    "situs_address": "SITUS_ADD",
+    "situs_city": "SITUS_CITY",
+    "deed_date": "DEED_DATE",
+    "assessed_value": "TOTAL_VALUE_ASSD",
+    "year_built": "YEAR_BUILT",
+    "heated_area": "HEATED_AREA",
+}
+RALEIGH_PERMIT_FIELDS = {
+    "permit_number": "permitnum",
+    "permit_type": "permittype",
+    "description": "description",
+    "status": "statuscurrent",
+    "issue_date": "issueddate",
+    "final_date": "permitfinaldate",
+    "valuation": "estprojectcost",
+    "address": "originaladdress1",
+}
+
+RENOVATION_KEYWORDS = [
+    "kitchen", "bath", "remodel", "renovation", "renovate", "addition",
+    "roof", "structural", "rehab", "gut", "interior alteration",
+]
+RENOVATION_LOOKBACK_DAYS = 120
+RENOVATION_MIN_VALUE = 15000       # ignore trivial permits (fences, water heaters)
+RENOVATION_QUALIFY_THRESHOLD = 55  # below this, not worth Diane's time

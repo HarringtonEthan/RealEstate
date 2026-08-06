@@ -2,15 +2,15 @@ window.LEAD_DATA = {
   "generated_at": "2026-08-06 (example data)",
   "is_sample": true,
   "stats": {
-    "qualified": 5,
+    "qualified": 6,
     "high_priority": 1,
     "reviewed_today": 143,
     "rejected_total": 138
   },
   "pipeline": {
     "High priority": 1,
-    "Qualified": 4,
-    "Researching": 1,
+    "Qualified": 5,
+    "Researching": 2,
     "Rejected (kept for the record)": 138
   },
   "market_notes": [
@@ -201,6 +201,62 @@ window.LEAD_DATA = {
         "evidence": { "points": 8, "max": 10, "rationale": "Authoritative public records." },
         "value": { "points": 5, "max": 10, "rationale": "Assessed value band (sample)." },
         "confidence": { "points": 2, "max": 5, "rationale": "Pattern-based, inherently uncertain." }
+      }
+    },
+    {
+      "id": "sample_7",
+      "sample": true,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "QUALIFIED",
+      "stage_label": "Qualified",
+      "location": "412 Example Lane (made up), Apex",
+      "score": 85,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-08-06",
+      "signal_date": "2026-07-20",
+      "signal": "Example: Wake County permit records show a full kitchen and bathroom remodel permit ($68,000) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover — worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client, or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell — verify independently.",
+      "source": "Wake County / Raleigh public permit & tax records (example)",
+      "source_url": "#",
+      "timeframe": "",
+      "budget": "",
+      "property_info": { "year_built": 1998, "heated_area_sqft": 2140, "assessed_value": 398000, "permit_valuation": 68000 },
+      "score_breakdown": {
+        "absentee_owner": { "points": 35, "max": 35, "rationale": "Owner's mailing address differs from the property — likely an investor or rental owner." },
+        "ownership_tenure": { "points": 25, "max": 25, "rationale": "Owned about 8 months — a short hold, classic flip timing." },
+        "permit_recency": { "points": 20, "max": 20, "rationale": "Renovation permit closed about 17 days ago." },
+        "permit_value": { "points": 15, "max": 20, "rationale": "Permit valued at $68,000." }
+      }
+    },
+    {
+      "id": "sample_8",
+      "sample": true,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "88 Example Court (made up), Garner",
+      "score": 60,
+      "confidence": "low",
+      "verification": "verified",
+      "discovered": "2026-08-05",
+      "signal_date": "2026-06-10",
+      "signal": "Example: Wake County permit records show a roof and structural repair permit ($22,500) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover — worth a look before it's listed.",
+      "next_action": "Lower-confidence pattern — worth a quick check, not urgent. See if it's already listed before spending more time on it.",
+      "source": "Wake County / Raleigh public permit & tax records (example)",
+      "source_url": "#",
+      "timeframe": "",
+      "budget": "",
+      "property_info": { "year_built": 1985, "heated_area_sqft": 1680, "assessed_value": 289000, "permit_valuation": 22500 },
+      "score_breakdown": {
+        "absentee_owner": { "points": 35, "max": 35, "rationale": "Owner's mailing address differs from the property — likely an investor or rental owner." },
+        "ownership_tenure": { "points": 12, "max": 25, "rationale": "Owned about 6.2 years." },
+        "permit_recency": { "points": 5, "max": 20, "rationale": "Renovation permit closed about 57 days ago." },
+        "permit_value": { "points": 10, "max": 20, "rationale": "Permit valued at $22,500." }
       }
     }
   ]

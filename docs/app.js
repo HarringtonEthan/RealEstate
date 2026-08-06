@@ -29,8 +29,10 @@
     ["sell", "🏡 Sellers"],
     ["relocation", "🚚 Relocation"],
     ["investor", "📈 Investors"],
+    ["reno", "🔨 Renovation Watch"],
   ];
   const groupOf = (lead) => {
+    if (lead.type === "renovation_watch") return "reno";
     if (lead.type === "relocation") return "relocation";
     if (lead.type === "investor") return "investor";
     if (["seller", "fsbo", "expired", "downsizer", "land"].includes(lead.type)) return "sell";
@@ -105,6 +107,7 @@
       dt("Suggested next step", lead.next_action) +
       (lead.timeframe ? dt("Timeframe", lead.timeframe) : "") +
       (lead.budget ? dt("Budget mentioned", lead.budget) : "") +
+      dt("Property facts", propertyFacts(lead.property_info)) +
       '<dt>Source</dt><dd class="quiet">' + postedBy + esc(lead.source) +
       (lead.signal_date ? " · posted " + esc(lead.signal_date) : "") +
       sourceLink(lead) + "</dd>" +
@@ -125,6 +128,16 @@
 
   function dt(label, value) {
     return value ? "<dt>" + esc(label) + "</dt><dd>" + esc(value) + "</dd>" : "";
+  }
+
+  function propertyFacts(info) {
+    if (!info) return "";
+    const bits = [];
+    if (info.year_built) bits.push("Built " + info.year_built);
+    if (info.heated_area_sqft) bits.push(Number(info.heated_area_sqft).toLocaleString() + " sqft");
+    if (info.assessed_value) bits.push("assessed $" + Number(info.assessed_value).toLocaleString());
+    if (info.permit_valuation) bits.push("renovation ~$" + Number(info.permit_valuation).toLocaleString());
+    return bits.join(" · ");
   }
 
   function sourceLink(lead) {

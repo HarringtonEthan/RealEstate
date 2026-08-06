@@ -57,6 +57,12 @@ def write_site_data(data: dict) -> str:
 def _lead_dict(lead) -> dict:
     breakdown = json.loads(lead["score_breakdown"] or "{}")
     notes = json.loads(lead["research_notes"] or "{}")
+    info = json.loads(lead["property_info"] or "{}")
+
+    location = lead["city"] or "Area to be determined"
+    if lead["subject_kind"] == "property" and lead["property_address"]:
+        location = f"{lead['property_address']}, {lead['city'] or ''}".rstrip(", ")
+
     return {
         "id": lead["lead_id"],
         "sample": False,
@@ -65,7 +71,7 @@ def _lead_dict(lead) -> dict:
         "type_label": TYPE_LABELS.get(lead["lead_type"], lead["lead_type"]),
         "stage": lead["stage"],
         "stage_label": STAGE_LABELS.get(lead["stage"], lead["stage"]),
-        "location": lead["city"] or "Area to be determined",
+        "location": location,
         "score": lead["lead_score"],
         "confidence": lead["confidence"],
         "verification": lead["verification"],
@@ -78,6 +84,7 @@ def _lead_dict(lead) -> dict:
         "source_url": lead["source_url"],
         "timeframe": notes.get("timeframe") or "",
         "budget": notes.get("budget_hint") or "",
+        "property_info": info,
         "score_breakdown": {
             k: {"points": v["points"], "max": v["max"], "rationale": v["rationale"]}
             for k, v in breakdown.items()

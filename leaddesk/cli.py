@@ -12,7 +12,7 @@ import sys
 
 from . import brief as brief_mod
 from . import config, db, export_site
-from .agents import qualifier, triage
+from .agents import flip_scanner, qualifier, triage
 from .sources import reddit
 
 
@@ -29,7 +29,7 @@ def cmd_run_once(_args):
     conn = db.connect()
     db.log_event(conn, "run_started", agent="orchestrator")
 
-    print("[1/5] Fetching public posts (Reddit)…")
+    print("[1/6] Fetching public posts (Reddit)…")
     items = reddit.fetch_new_posts()
     errors = [i["_error"] for i in items if "_error" in i]
     items = [i for i in items if "_error" not in i]
@@ -42,12 +42,12 @@ def cmd_run_once(_args):
     fresh = [i for i in items if db.mark_seen(conn, i["item_key"])]
     print(f"      {len(items)} posts pulled, {len(fresh)} not seen before")
 
-    print("[2/5] Triage (fast model)…")
+    print("[2/6] Triage (fast model)…")
     candidates = triage.triage(conn, fresh)
     print(f"      {len(candidates)} candidate(s) kept, {len(fresh) - len(candidates)} rejected")
 
     candidates = candidates[: config.MAX_QUALIFY_PER_RUN]
-    print(f"[3/5] Qualifying {len(candidates)} candidate(s) (reasoning model)…")
+    print(f"[3/6] Qualifying {len(candidates)} candidate(s) (reasoning model)…")
     qualified = 0
     for item in candidates:
         lead = qualifier.qualify(conn, item)
@@ -57,11 +57,21 @@ def cmd_run_once(_args):
         elif lead:
             print(f"      ✗ rejected: {lead['rejection_reason']}")
 
-    print("[4/5] Writing daily brief…")
+    print("[4/6] Scanning public records for renovation/flip signals (free — no AI calls)…")
+    try:
+        flip_leads = flip_scanner.scan(conn)
+        found = sum(1 for l in flip_leads if l["stage"] in ("QUALIFIED", "RESEARCHING"))
+        print(f"      {found} property signal(s) found")
+        qualified += sum(1 for l in flip_leads if l["stage"] == "QUALIFIED")
+    except Exception as exc:
+        print(f"      warning: records scan failed ({exc}); continuing without it")
+        db.log_event(conn, "agent_error", agent="flip_scanner", detail={"error": str(exc)})
+
+    print("[5/6] Writing daily brief…")
     path = brief_mod.generate(conn)
     print(f"      {path}")
 
-    print("[5/5] Exporting website data…")
+    print("[6/6] Exporting website data…")
     site = export_site.export(conn)
     print(f"      {site}")
 
