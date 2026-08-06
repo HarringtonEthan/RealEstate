@@ -60,6 +60,7 @@ def _lead_dict(lead) -> dict:
     return {
         "id": lead["lead_id"],
         "sample": False,
+        "author": lead["display_name"],
         "type": lead["lead_type"],
         "type_label": TYPE_LABELS.get(lead["lead_type"], lead["lead_type"]),
         "stage": lead["stage"],

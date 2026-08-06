@@ -12,18 +12,40 @@
 
 <header class="site-header">
   <div class="wrap">
-    <h1>🏡 Diane&rsquo;s Lead Desk</h1>
-    <p class="tagline">Real-estate opportunities in the Raleigh&nbsp;/&nbsp;Triangle area &mdash; found, researched, and scored for you.</p>
+    <p class="eyebrow">Raleigh &middot; Cary &middot; Apex &middot; Wake Forest &middot; the Triangle</p>
+    <h1>Diane&rsquo;s Lead Desk</h1>
+    <p class="tagline">Real people, publicly saying they want to buy or sell &mdash; found, researched, and scored, so your morning starts with the good ones.</p>
     <p class="updated" id="updated"></p>
   </div>
+  <svg class="skyline" viewBox="0 0 800 54" preserveAspectRatio="none" aria-hidden="true">
+    <g fill="currentColor">
+      <rect x="0"   y="34" width="60"  height="20"/>
+      <rect x="70"  y="24" width="34"  height="30"/>
+      <rect x="112" y="38" width="70"  height="16"/>
+      <polygon points="200,54 200,26 218,12 236,26 236,54"/>
+      <rect x="248" y="30" width="40"  height="24"/>
+      <rect x="300" y="18" width="26"  height="36"/>
+      <rect x="334" y="28" width="52"  height="26"/>
+      <polygon points="400,54 400,30 422,16 444,30 444,54"/>
+      <rect x="456" y="36" width="64"  height="18"/>
+      <rect x="530" y="22" width="30"  height="32"/>
+      <rect x="568" y="32" width="46"  height="22"/>
+      <polygon points="628,54 628,28 644,18 660,28 660,54"/>
+      <rect x="672" y="36" width="56"  height="18"/>
+      <rect x="736" y="26" width="28"  height="28"/>
+      <rect x="770" y="38" width="30"  height="16"/>
+    </g>
+  </svg>
 </header>
+<hr class="brass-rule">
 
 <div class="wrap">
 
   <div id="sample-banner" class="sample-banner" hidden>
     <strong>You&rsquo;re looking at example data.</strong>
     These are made-up leads that show what the page will look like. Once the system runs for real,
-    this page will show real opportunities from public posts and public records.
+    this page shows real opportunities from public posts and public records &mdash; each with a link
+    to the original post.
   </div>
 
   <p class="summary" id="summary"></p>
@@ -33,25 +55,31 @@
   <main id="leads" aria-live="polite"></main>
 
   <section class="panel" id="market-panel" hidden>
-    <h2>📈 Market notes</h2>
+    <p class="eyebrow">The bigger picture</p>
+    <h2>Market notes</h2>
     <ul id="market-notes"></ul>
   </section>
 
   <section class="panel">
-    <h2>📊 Pipeline</h2>
+    <p class="eyebrow">Where things stand</p>
+    <h2>Pipeline</h2>
     <ul class="pipeline" id="pipeline"></ul>
   </section>
 
   <section class="panel how">
+    <p class="eyebrow">Behind the scenes</p>
     <h2>How this works</h2>
     <p>A research assistant program reads <strong>public</strong> posts (like Reddit) and
     <strong>public</strong> county records looking for people in the Triangle who have clearly said
     they want to buy, sell, relocate, or invest. It throws away everything vague or old, researches
     the rest, and gives each opportunity a score out of 100 with a written explanation.</p>
-    <p><strong>Nothing here is contacted automatically &mdash; ever.</strong> Every card is just
-    information for you to review. Before reaching out to anyone, open the source link, read it
-    yourself, and use your own judgment (and the community&rsquo;s etiquette &mdash; a helpful reply
-    beats a pitch every time).</p>
+    <p><strong>Nothing here is contacted automatically &mdash; ever.</strong> Every card links to the
+    original public post so you can read it yourself and decide. For forum leads, the post is the
+    contact path &mdash; a genuinely helpful reply beats a pitch every time. The system only ever
+    shows contact details a person published themselves.</p>
+    <p><a href="how-it-works.html"><strong>Read the full plain-English guide →</strong></a>
+    &mdash; where every piece of information comes from, how your MLS data is handled, and
+    the legal rules this was built around.</p>
     <p class="fineprint">All information comes from public sources and is provided for research only.
     Leads are never selected, scored, or filtered based on race, color, religion, sex, disability,
     familial status, national origin, or any other protected characteristic. Verify everything
@@ -61,7 +89,7 @@
 </div>
 
 <footer class="site-footer">
-  <div class="wrap">Made with ❤️ for Diane Harrington · Raleigh, NC</div>
+  <div class="wrap">Made with ❤️ for Diane Harrington &middot; Raleigh, North Carolina</div>
 </footer>
 
 <script src="data/leads.js"></script>

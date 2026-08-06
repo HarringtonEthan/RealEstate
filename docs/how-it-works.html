@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>How it works — Diane's Lead Desk</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>">
+<style>
+  .how-page h2 { margin-top: 0; }
+  .checklist { list-style: none; padding-left: 0 !important; }
+  .checklist li { padding-left: 30px; position: relative; margin: 10px 0 !important; }
+  .checklist li::before { position: absolute; left: 0; font-family: system-ui, sans-serif; }
+  .checklist.yes li::before { content: "✓"; color: var(--hot); font-weight: 700; }
+  .checklist.no li::before { content: "✕"; color: var(--brass); font-weight: 700; }
+  .back-link { display: inline-block; margin: 26px 0 0; font-family: system-ui, sans-serif;
+    font-weight: 600; color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">Diane&rsquo;s Lead Desk &middot; plain-English guide</p>
+    <h1>How it works &mdash; and why it&rsquo;s on the right side of the rules</h1>
+    <p class="tagline">Everything this tool does, where the information comes from, and where the legal lines are &mdash; written for a busy agent, not a lawyer.</p>
+  </div>
+  <svg class="skyline" viewBox="0 0 800 54" preserveAspectRatio="none" aria-hidden="true">
+    <g fill="currentColor">
+      <rect x="0" y="34" width="60" height="20"/><rect x="70" y="24" width="34" height="30"/>
+      <rect x="112" y="38" width="70" height="16"/><polygon points="200,54 200,26 218,12 236,26 236,54"/>
+      <rect x="248" y="30" width="40" height="24"/><rect x="300" y="18" width="26" height="36"/>
+      <rect x="334" y="28" width="52" height="26"/><polygon points="400,54 400,30 422,16 444,30 444,54"/>
+      <rect x="456" y="36" width="64" height="18"/><rect x="530" y="22" width="30" height="32"/>
+      <rect x="568" y="32" width="46" height="22"/><polygon points="628,54 628,28 644,18 660,28 660,54"/>
+      <rect x="672" y="36" width="56" height="18"/><rect x="736" y="26" width="28" height="28"/>
+      <rect x="770" y="38" width="30" height="16"/>
+    </g>
+  </svg>
+</header>
+<hr class="brass-rule">
+
+<div class="wrap how-page">
+
+  <a class="back-link" href="index.html">&larr; Back to your leads</a>
+
+  <section class="panel">
+    <p class="eyebrow">The one-sentence version</p>
+    <h2>It&rsquo;s a research assistant, not a robot salesman</h2>
+    <p>Ethan set up a computer program that reads <strong>publicly available information</strong> every day
+    &mdash; the same posts and records anyone could read in a browser &mdash; and picks out people in the
+    Triangle who have clearly said they want to buy, sell, or move. It writes each one up as a card on
+    your page with a score and a link to the original post. That&rsquo;s all it does.
+    <strong>It never contacts anyone, ever.</strong> You read the cards; you decide what, if anything, to do.</p>
+  </section>
+
+  <section class="panel">
+    <p class="eyebrow">Source 1 of 3</p>
+    <h2>Public posts (Reddit and similar forums)</h2>
+    <p>When someone posts publicly &mdash; &ldquo;We&rsquo;re relocating to Cary this fall, where should we
+    look?&rdquo; &mdash; they have chosen to say that to the whole internet. Reading public posts is no
+    different, legally, from you scrolling Reddit yourself; the program just never sleeps and never misses
+    one. It saves the link and a summary. It does <em>not</em> dig for the poster&rsquo;s phone number,
+    email, or identity &mdash; the way to respond is right there in the thread, as yourself.</p>
+    <p><strong>The etiquette that keeps this clean:</strong> on forums, a genuinely helpful reply from a
+    knowledgeable local agent is welcome; a sales pitch is not. Every card&rsquo;s &ldquo;suggested next
+    step&rdquo; is written with that in mind.</p>
+  </section>
+
+  <section class="panel">
+    <p class="eyebrow">Source 2 of 3</p>
+    <h2>Public county records (Wake County and neighbors)</h2>
+    <p>Who owns a property, when it last sold, its tax value, and its building permits are
+    <strong>public records under North Carolina law</strong> &mdash; the county publishes them on purpose,
+    for everyone. Appraisers, title companies, investors, and agents look at them every day. The program
+    reads the same pages and notices patterns worth a look, like a house owned 19 years by someone whose
+    tax mail goes to Florida that just finished permit repairs.</p>
+    <p>Two lines it never crosses: it doesn&rsquo;t label anyone &ldquo;distressed,&rdquo; and it
+    doesn&rsquo;t try to guess private life events (divorce, illness, money trouble). Records patterns
+    are shown as <em>research candidates</em> only &mdash; cooler leads, clearly marked.</p>
+  </section>
+
+  <section class="panel">
+    <p class="eyebrow">Source 3 of 3</p>
+    <h2>Your MLS data (expired &amp; withdrawn listings) &mdash; the part to understand best</h2>
+    <p>This is the one source that is <em>not</em> public &mdash; it&rsquo;s licensed to <strong>you</strong>
+    as a Triangle MLS member. So the tool is built around a strict rule:</p>
+    <ul class="checklist yes">
+      <li><strong>You</strong> log into the MLS yourself, like always, and export a file (expired/withdrawn
+      listings) &mdash; about two minutes.</li>
+      <li>You drop that file into a folder, and the program reads <strong>your</strong> export, under
+      <strong>your</strong> license, for <strong>your own prospecting</strong> &mdash; the classic,
+      intended use of that data.</li>
+      <li>Expired listings only appear here <strong>after</strong> they&rsquo;ve expired &mdash; the tool
+      will never suggest approaching a seller who is currently listed with another agent (that&rsquo;s
+      the REALTOR&reg; Code of Ethics line, and it&rsquo;s built in).</li>
+    </ul>
+    <ul class="checklist no">
+      <li>The program <strong>never</strong> has your MLS password and never logs in on its own
+      &mdash; automating an MLS login could violate your MLS agreement, so it simply can&rsquo;t.</li>
+      <li>MLS-derived information is <strong>never</strong> published anywhere &mdash; it stays in your
+      private lead list, never on a public page.</li>
+    </ul>
+    <p><strong>Your one homework item:</strong> mention to your broker-in-charge (or Triangle MLS) that
+    you use your own exports for prospecting research. It&rsquo;s the standard use of that data, but
+    it&rsquo;s your license, so a one-time &ldquo;yes, that&rsquo;s fine&rdquo; is worth having.</p>
+  </section>
+
+  <section class="panel">
+    <p class="eyebrow">The rules it was built around</p>
+    <h2>The legal checklist, in plain English</h2>
+    <ul class="checklist yes">
+      <li><strong>Fair Housing:</strong> the system is physically incapable of sorting leads by race,
+      religion, family status, national origin, disability, or anything like it &mdash; those fields
+      don&rsquo;t exist in it, and its instructions forbid guessing at them. Leads are judged only on
+      what people said, where the property is, and timing.</li>
+      <li><strong>Do-Not-Call / robocall / spam laws (TCPA, DNC, CAN-SPAM):</strong> those laws govern
+      <em>contacting</em> people. This system contacts no one, so it can&rsquo;t break them. When
+      <em>you</em> choose to cold-call an expired or FSBO owner, the normal rules apply to you like
+      always: check the Do-Not-Call registry first, identify yourself and your brokerage.</li>
+      <li><strong>Website rules:</strong> it only reads sites that allow it. Zillow, Craigslist,
+      Facebook, Nextdoor, and LinkedIn forbid automated collection &mdash; so it simply doesn&rsquo;t
+      touch them. If you see something in a private group yourself, you can add it to the list by hand;
+      a person reading is always allowed.</li>
+      <li><strong>Privacy:</strong> it only records what people published themselves, plus public
+      records. No bought data, no &ldquo;skip tracing,&rdquo; no hunting for contact info.</li>
+      <li><strong>NCREC advertising rules:</strong> any future outreach templates will carry your name
+      and brokerage, and nothing sends without you approving it &mdash; each one, individually.</li>
+    </ul>
+    <p class="fineprint">Honest fine print: this page is a careful explanation, not legal advice.
+    The system was designed conservatively around these rules, and the two judgment calls that involve
+    your license &mdash; MLS export use, and how you personally do outreach &mdash; are exactly the two
+    things worth a quick word with your broker-in-charge.</p>
+  </section>
+
+  <a class="back-link" href="index.html">&larr; Back to your leads</a>
+
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">Made with ❤️ for Diane Harrington &middot; Raleigh, North Carolina</div>
+</footer>
+
+</body>
+</html>

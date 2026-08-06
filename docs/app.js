@@ -13,13 +13,14 @@
 
   // ---- Summary sentence ----------------------------------------------------
   const s = data.stats || {};
+  const el = document.getElementById("summary");
   const bits = [];
-  bits.push(plural(s.qualified || 0, "qualified opportunity", "qualified opportunities"));
   if (s.high_priority) bits.push(s.high_priority + " marked high priority");
   if (s.reviewed_today) bits.push(s.reviewed_today + " candidates reviewed today");
   if (s.rejected_total) bits.push(s.rejected_total + " rejected as not good enough");
-  document.getElementById("summary").textContent =
-    bits.length ? "Right now: " + bits.join(" · ") + "." : "";
+  el.innerHTML = "<strong>" +
+    plural(s.qualified || 0, "qualified opportunity", "qualified opportunities") +
+    "</strong>" + (bits.length ? " · " + bits.map(esc).join(" · ") : "") + ".";
 
   // ---- Filters ---------------------------------------------------------------
   const GROUPS = [
@@ -57,41 +58,56 @@
 
   // ---- Lead cards ------------------------------------------------------------
   function render() {
-    const el = document.getElementById("leads");
+    const box = document.getElementById("leads");
     const leads = data.leads.filter((l) => active === "all" || groupOf(l) === active);
     if (!leads.length) {
-      el.innerHTML = '<div class="empty">No opportunities in this group right now.<br>' +
+      box.innerHTML = '<div class="empty">No opportunities in this group right now.<br>' +
         "A quiet day is an honest day — the system only shows leads worth your time.</div>";
       return;
     }
-    el.innerHTML = leads.map(card).join("");
+    box.innerHTML = leads.map(card).join("");
+  }
+
+  function tierVars(score) {
+    const t = score >= 80 ? "hot" : score >= 70 ? "warm" : "cool";
+    return "--pct:" + score + "%;--tier:var(--" + t + ");--tier-soft:var(--" + t + "-soft)";
   }
 
   function card(lead) {
-    const tier = lead.score >= 80 ? "hot" : lead.score >= 70 ? "warm" : "cool";
-    const rows = Object.entries(lead.score_breakdown || {}).map(
-      ([name, v]) =>
+    const rows = Object.entries(lead.score_breakdown || {}).map(([name, v]) => {
+      const pct = v.max ? Math.round((v.points / v.max) * 100) : 0;
+      return (
         '<div class="bd-row"><span class="bd-name">' + esc(name) +
-        '</span><span class="bd-pts">' + v.points + "/" + v.max +
-        '</span><span class="bd-why">' + esc(v.rationale || "") + "</span></div>"
-    ).join("");
+        '</span><span class="bd-pts">' + v.points + "/" + v.max + "</span>" +
+        '<span class="bd-bar"><span class="bd-fill" style="width:' + pct + '%"></span></span>' +
+        (v.rationale ? '<span class="bd-why">' + esc(v.rationale) + "</span>" : "") +
+        "</div>"
+      );
+    }).join("");
+
+    const priority = lead.stage === "HIGH_PRIORITY";
+    const postedBy = lead.author ? "Posted by " + esc(lead.author) + " · " : "";
 
     return (
       '<article class="lead">' +
       '<div class="lead-top">' +
-      '<span class="score ' + tier + '">' + lead.score + "/100</span>" +
-      '<span class="lead-title">' + esc(lead.type_label) + " · " + esc(lead.location) + "</span>" +
-      '<span class="badge">' + esc(lead.stage_label) + "</span>" +
+      '<div class="ring" style="' + tierVars(lead.score) + '" role="img" aria-label="Score ' +
+        lead.score + ' out of 100"><span>' + lead.score + "</span></div>" +
+      '<div class="lead-heading">' +
+      '<div class="lead-title">' + esc(lead.type_label) + " · " + esc(lead.location) + "</div>" +
+      '<div class="lead-sub">' +
+      '<span class="badge' + (priority ? " priority" : "") + '">' + esc(lead.stage_label) + "</span>" +
       (lead.sample ? '<span class="badge sample">Sample</span>' : "") +
-      "</div>" +
+      "</div></div></div>" +
       "<dl>" +
       dt("What they said", lead.signal) +
       dt("Why this matters", lead.why) +
       dt("Suggested next step", lead.next_action) +
       (lead.timeframe ? dt("Timeframe", lead.timeframe) : "") +
       (lead.budget ? dt("Budget mentioned", lead.budget) : "") +
-      '<dt>Source</dt><dd class="quiet">' + sourceLink(lead) +
-      (lead.signal_date ? " · posted " + esc(lead.signal_date) : "") + "</dd>" +
+      '<dt>Source</dt><dd class="quiet">' + postedBy + esc(lead.source) +
+      (lead.signal_date ? " · posted " + esc(lead.signal_date) : "") +
+      sourceLink(lead) + "</dd>" +
       "</dl>" +
       '<div class="meta-row">' +
       '<span>Found ' + esc(lead.discovered) + "</span>" +
@@ -112,12 +128,11 @@
   }
 
   function sourceLink(lead) {
-    const name = esc(lead.source || "source");
     if (lead.source_url && lead.source_url !== "#") {
-      return '<a href="' + esc(lead.source_url) + '" target="_blank" rel="noopener">' +
-        name + " ↗</a>";
+      return '<br><a class="post-link" href="' + esc(lead.source_url) +
+        '" target="_blank" rel="noopener">Open the post ↗</a>';
     }
-    return name;
+    return "";
   }
 
   // ---- Market notes & pipeline -------------------------------------------------
@@ -127,9 +142,8 @@
       data.market_notes.map((n) => "<li>" + esc(n) + "</li>").join("");
   }
 
-  const pipelineEl = document.getElementById("pipeline");
   const pipe = data.pipeline || {};
-  pipelineEl.innerHTML = Object.keys(pipe).length
+  document.getElementById("pipeline").innerHTML = Object.keys(pipe).length
     ? Object.entries(pipe).map(([stage, n]) =>
         "<li><span>" + esc(stage) + '</span><span class="count">' + n + "</span></li>").join("")
     : "<li><span>Nothing in the pipeline yet</span><span class='count'>0</span></li>";
