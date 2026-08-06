@@ -1,0 +1,61 @@
+name: Refresh leads
+
+on:
+  schedule:
+    - cron: "0 11 * * *"   # 7:00 AM Eastern (EDT); runs on the default branch only
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check for API key
+        id: key
+        run: |
+          if [ -z "${{ secrets.ANTHROPIC_API_KEY }}" ]; then
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "ANTHROPIC_API_KEY secret not set — skipping run."
+          else
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Restore lead database
+        if: steps.key.outputs.present == 'true'
+        uses: actions/cache@v4
+        with:
+          path: leaddesk.db
+          key: leaddesk-db-${{ github.run_id }}
+          restore-keys: leaddesk-db-
+
+      - name: Run pipeline
+        if: steps.key.outputs.present == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python -m leaddesk init-db
+          python -m leaddesk run-once
+
+      - name: Commit updated site data
+        if: steps.key.outputs.present == 'true'
+        run: |
+          git config user.name "lead-desk-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data briefs || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Daily lead refresh"
+            git push
+          else
+            echo "No changes to publish."
+          fi

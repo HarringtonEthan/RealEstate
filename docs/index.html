@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Diane's Lead Desk</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <h1>🏡 Diane&rsquo;s Lead Desk</h1>
+    <p class="tagline">Real-estate opportunities in the Raleigh&nbsp;/&nbsp;Triangle area &mdash; found, researched, and scored for you.</p>
+    <p class="updated" id="updated"></p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div id="sample-banner" class="sample-banner" hidden>
+    <strong>You&rsquo;re looking at example data.</strong>
+    These are made-up leads that show what the page will look like. Once the system runs for real,
+    this page will show real opportunities from public posts and public records.
+  </div>
+
+  <p class="summary" id="summary"></p>
+
+  <nav class="filters" id="filters" aria-label="Filter leads"></nav>
+
+  <main id="leads" aria-live="polite"></main>
+
+  <section class="panel" id="market-panel" hidden>
+    <h2>📈 Market notes</h2>
+    <ul id="market-notes"></ul>
+  </section>
+
+  <section class="panel">
+    <h2>📊 Pipeline</h2>
+    <ul class="pipeline" id="pipeline"></ul>
+  </section>
+
+  <section class="panel how">
+    <h2>How this works</h2>
+    <p>A research assistant program reads <strong>public</strong> posts (like Reddit) and
+    <strong>public</strong> county records looking for people in the Triangle who have clearly said
+    they want to buy, sell, relocate, or invest. It throws away everything vague or old, researches
+    the rest, and gives each opportunity a score out of 100 with a written explanation.</p>
+    <p><strong>Nothing here is contacted automatically &mdash; ever.</strong> Every card is just
+    information for you to review. Before reaching out to anyone, open the source link, read it
+    yourself, and use your own judgment (and the community&rsquo;s etiquette &mdash; a helpful reply
+    beats a pitch every time).</p>
+    <p class="fineprint">All information comes from public sources and is provided for research only.
+    Leads are never selected, scored, or filtered based on race, color, religion, sex, disability,
+    familial status, national origin, or any other protected characteristic. Verify everything
+    independently before acting on it.</p>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">Made with ❤️ for Diane Harrington · Raleigh, NC</div>
+</footer>
+
+<script src="data/leads.js"></script>
+<script src="app.js"></script>
+<noscript><div class="wrap"><p>This page needs JavaScript turned on to show the leads.</p></div></noscript>
+</body>
+</html>

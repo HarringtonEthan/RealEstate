@@ -1,0 +1,144 @@
+/* Diane's Lead Desk — warm, calm, readable. Built for a phone or an iPad at the
+   kitchen table, not a trading floor. */
+
+:root {
+  --bg: #faf7f2;
+  --card: #ffffff;
+  --ink: #2b2620;
+  --ink-soft: #6b6257;
+  --line: #e8e1d6;
+  --accent: #b3572d;        /* terracotta */
+  --accent-soft: #f6e8df;
+  --green: #1e6f4c;
+  --green-soft: #e4f1ea;
+  --amber: #8a6410;
+  --amber-soft: #f7eed7;
+  --blue: #3d5a80;
+  --blue-soft: #e7edf4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.wrap { max-width: 780px; margin: 0 auto; padding: 0 18px; }
+
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  padding: 28px 0 20px;
+}
+.site-header h1 { margin: 0 0 6px; font-size: 1.9rem; letter-spacing: .2px; }
+.tagline { margin: 0; color: var(--ink-soft); font-style: italic; }
+.updated { margin: 10px 0 0; font-size: .85rem; color: var(--ink-soft);
+  font-family: system-ui, sans-serif; }
+
+.sample-banner {
+  margin: 22px 0 0;
+  padding: 14px 16px;
+  background: var(--amber-soft);
+  border: 1px solid #e3cf9a;
+  border-radius: 10px;
+  font-family: system-ui, sans-serif;
+  font-size: .95rem;
+}
+
+.summary { margin: 22px 0 14px; font-size: 1.05rem; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.filters button {
+  font: inherit; font-family: system-ui, sans-serif; font-size: .9rem;
+  padding: 7px 14px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: #fff; color: var(--ink-soft);
+}
+.filters button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ---- Lead cards ---- */
+.lead {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 3px rgba(60,45,30,.06);
+}
+.lead-top { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.score {
+  font-family: system-ui, sans-serif; font-weight: 700; font-size: 1.05rem;
+  padding: 4px 12px; border-radius: 999px; white-space: nowrap;
+}
+.score.hot   { background: var(--green-soft); color: var(--green); }
+.score.warm  { background: var(--amber-soft); color: var(--amber); }
+.score.cool  { background: var(--blue-soft);  color: var(--blue); }
+.lead-title { font-size: 1.2rem; font-weight: 700; }
+.badge {
+  font-family: system-ui, sans-serif; font-size: .75rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .06em;
+  padding: 3px 9px; border-radius: 6px; background: var(--accent-soft); color: var(--accent);
+}
+.badge.sample { background: #eee9e0; color: var(--ink-soft); }
+
+.lead dl { margin: 14px 0 0; }
+.lead dt {
+  font-family: system-ui, sans-serif; font-size: .72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft);
+  margin-top: 12px;
+}
+.lead dd { margin: 3px 0 0; }
+.lead dd.quiet { color: var(--ink-soft); font-size: .95rem; }
+.lead a { color: var(--accent); }
+
+.meta-row {
+  display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px;
+  font-family: system-ui, sans-serif; font-size: .85rem; color: var(--ink-soft);
+}
+.meta-row .ok { color: var(--green); }
+
+details.breakdown { margin-top: 14px; font-family: system-ui, sans-serif; }
+details.breakdown summary {
+  cursor: pointer; font-size: .9rem; color: var(--blue); user-select: none;
+}
+.bd-row { display: grid; grid-template-columns: 120px 52px 1fr; gap: 10px;
+  align-items: start; margin-top: 8px; font-size: .85rem; }
+.bd-name { color: var(--ink-soft); text-transform: capitalize; }
+.bd-pts { font-weight: 700; white-space: nowrap; }
+.bd-why { color: var(--ink-soft); }
+
+/* ---- Panels ---- */
+.panel {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 18px 22px; margin: 26px 0;
+}
+.panel h2 { margin: 0 0 10px; font-size: 1.2rem; }
+.pipeline { list-style: none; margin: 0; padding: 0;
+  font-family: system-ui, sans-serif; font-size: .95rem; }
+.pipeline li { display: flex; justify-content: space-between;
+  padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.pipeline li:last-child { border-bottom: none; }
+.pipeline .count { font-weight: 700; }
+
+.how p { margin: 10px 0; }
+.fineprint { font-size: .82rem; color: var(--ink-soft); font-family: system-ui, sans-serif; }
+
+.empty {
+  text-align: center; padding: 44px 20px; color: var(--ink-soft);
+  background: var(--card); border: 1px dashed var(--line); border-radius: 14px;
+}
+
+.site-footer {
+  margin-top: 40px; padding: 22px 0 34px; border-top: 1px solid var(--line);
+  color: var(--ink-soft); font-size: .88rem; text-align: center;
+  font-family: system-ui, sans-serif;
+}
+
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  .bd-row { grid-template-columns: 96px 46px 1fr; }
+}
