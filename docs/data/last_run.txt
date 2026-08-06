@@ -1,0 +1,14 @@
+Run started 2026-08-06 23:42 UTC
+[skipped] Reddit source is off (config.ENABLE_REDDIT_SOURCE = False)
+[1/4] Scanning Wake County / Raleigh public records (free — no AI calls)…
+      warning: wake_records: could not fetch permits (ArcGIS error: Cannot perform query. Invalid query parameters.)
+      0 property signal(s) found
+[2/4] Reading your MLS export (free — no AI calls)…
+      warning: No MLS export files found in /home/runner/work/RealEstate/RealEstate/mls_exports — drop a CSV there (see mls_export_template.csv for the expected shape).
+      0 expired/withdrawn listing lead(s) found
+[3/4] Writing daily brief…
+      /home/runner/work/RealEstate/RealEstate/briefs/2026-08-06.md
+[4/4] Exporting website data…
+      /home/runner/work/RealEstate/RealEstate/docs/data/leads.js
+
+Done. 0 qualified/high-priority lead(s) today · spend $0.00
