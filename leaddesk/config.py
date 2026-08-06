@@ -69,52 +69,53 @@ ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 # Zero AI cost by design — permit and tax records are structured data, so
 # matching and scoring are pure arithmetic (see scoring_records.py).
 #
-# NOTE ON FIELD NAMES: these ArcGIS REST endpoints and field names follow the
-# standard shape Wake County iMAPS and the City of Raleigh's ArcGIS Hub use,
-# but have not yet been confirmed against the live schema (scripts/probe_records.py
-# discovers the real ones; its results supersede these). Everything below is a
-# single point of edit — if a field name is wrong, fix it here, not in the code
-# that uses it.
+# Field names below are CONFIRMED against the live schema via
+# scripts/probe_records.py (run 2026-08-06) — not guesses. The Raleigh permits
+# feed conveniently already includes the owner-of-record's mailing address on
+# every permit row (parcelownername / parcelowneraddress1-2), so the
+# absentee-owner signal needs no separate join. The Wake County parcels layer
+# is queried afterward, by exact PIN, purely to enrich with year built /
+# heated sqft / assessed value / deed date — if that lookup fails for a given
+# PIN the candidate still stands, just without those extras.
 WAKE_PARCELS_URL = os.environ.get(
     "LEADDESK_WAKE_PARCELS_URL",
-    "https://maps.wakegov.com/arcgis/rest/services/Property/Parcels/MapServer/0",
+    "https://maps.wakegov.com/arcgis/rest/services/Property/Parcels/FeatureServer/0",
 )
 RALEIGH_PERMITS_URL = os.environ.get(
     "LEADDESK_RALEIGH_PERMITS_URL",
     "https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/"
-    "Building_Permits/FeatureServer/0",
+    "Building_Permits_Issued_Past_180_Days/FeatureServer/0",
 )
 
 WAKE_PARCEL_FIELDS = {
     "pin": "PIN_NUM",
-    "owner": "OWNER",
-    "mail_address": "MAIL_ADD1",
-    "mail_city": "MAIL_CITY",
-    "mail_state": "MAIL_STATE",
-    "situs_address": "SITUS_ADD",
-    "situs_city": "SITUS_CITY",
     "deed_date": "DEED_DATE",
     "assessed_value": "TOTAL_VALUE_ASSD",
     "year_built": "YEAR_BUILT",
-    "heated_area": "HEATED_AREA",
+    "heated_area": "HEATEDAREA",
 }
 RALEIGH_PERMIT_FIELDS = {
+    "pin": "pin",
     "permit_number": "permitnum",
     "permit_type": "permittype",
     "description": "description",
-    "status": "statuscurrent",
+    "status": "statuscurrentmapped",
     "issue_date": "issueddate",
-    "final_date": "permitfinaldate",
     "valuation": "estprojectcost",
-    "address": "originaladdress1",
+    "situs_address": "originaladdress1",
+    "situs_city": "originalcity",
+    "owner": "parcelownername",
+    "mail_address": "parcelowneraddress1",
+    "mail_address2": "parcelowneraddress2",
 }
 
 RENOVATION_KEYWORDS = [
     "kitchen", "bath", "remodel", "renovation", "renovate", "addition",
-    "roof", "structural", "rehab", "gut", "interior alteration",
+    "roof", "structural", "rehab", "gut", "interior alteration", "repair",
+    "deck", "porch", "basement", "flooring",
 ]
-RENOVATION_LOOKBACK_DAYS = 120
-RENOVATION_MIN_VALUE = 15000       # ignore trivial permits (fences, water heaters)
+RENOVATION_LOOKBACK_DAYS = 180      # matches the Raleigh feed's own window
+RENOVATION_MIN_VALUE = 10000        # ignore trivial permits (fences, water heaters)
 RENOVATION_QUALIFY_THRESHOLD = 55  # below this, not worth Diane's time
 
 # --- MLS-licensed data: expired / withdrawn listings ---------------------------

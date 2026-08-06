@@ -40,10 +40,16 @@ def _map_fields(raw: dict, field_map: dict) -> dict:
 
 
 def fetch_recent_renovation_permits() -> list[dict]:
-    """Recent, substantial renovation permits from City of Raleigh open data."""
+    """Recent, substantial renovation permits from City of Raleigh open data.
+
+    The owner-of-record's name and mailing address ride along on every permit
+    row already (parcelownername / parcelowneraddress1), so this one query is
+    enough to compute the absentee-owner signal — no parcel join required for
+    that part.
+    """
     cutoff = (datetime.now(timezone.utc) - timedelta(days=config.RENOVATION_LOOKBACK_DAYS))
     cutoff_ms = int(cutoff.timestamp() * 1000)
-    date_field = config.RALEIGH_PERMIT_FIELDS["final_date"]
+    date_field = config.RALEIGH_PERMIT_FIELDS["issue_date"]
     desc_field = config.RALEIGH_PERMIT_FIELDS["description"]
     value_field = config.RALEIGH_PERMIT_FIELDS["valuation"]
 
@@ -55,17 +61,19 @@ def fetch_recent_renovation_permits() -> list[dict]:
         f"AND ({keyword_clause})"
     )
 
-    raw = _arcgis_query(config.RALEIGH_PERMITS_URL, where, n=100)
+    raw = _arcgis_query(config.RALEIGH_PERMITS_URL, where, n=200)
     return [_map_fields(r, config.RALEIGH_PERMIT_FIELDS) for r in raw]
 
 
-def fetch_parcel_by_address(address: str) -> dict | None:
-    """Look up owner/tax record for one situs address."""
-    if not address:
+def fetch_parcel_by_pin(pin: str) -> dict | None:
+    """Look up the Wake County tax record for one parcel by its exact PIN —
+    used only to enrich a candidate with year built / heated sqft / assessed
+    value / deed date. Optional: a miss here doesn't disqualify a candidate."""
+    if not pin:
         return None
-    situs_field = config.WAKE_PARCEL_FIELDS["situs_address"]
-    safe = address.replace("'", "''").upper()
-    where = f"UPPER({situs_field}) LIKE '%{safe}%'"
+    pin_field = config.WAKE_PARCEL_FIELDS["pin"]
+    safe = str(pin).replace("'", "''")
+    where = f"{pin_field} = '{safe}'"
     raw = _arcgis_query(config.WAKE_PARCELS_URL, where, n=1)
     if not raw:
         return None
@@ -73,12 +81,14 @@ def fetch_parcel_by_address(address: str) -> dict | None:
 
 
 def find_renovation_candidates() -> list[dict]:
-    """Cross-reference recent permits with ownership records.
+    """Recent renovation permits, each enriched with parcel tax-record facts
+    where available.
 
-    Returns a list of merged candidate dicts (permit + parcel fields), or a
-    single-item list with an "_error" key if the permit fetch itself fails
-    (network unreachable, endpoint down, schema mismatch) — same convention
-    as leaddesk.sources.reddit, so callers handle both sources identically.
+    Returns a list of merged candidate dicts (permit fields + optional parcel
+    enrichment), or a single-item list with an "_error" key if the permit
+    fetch itself fails (network unreachable, endpoint down, schema mismatch)
+    — same convention as leaddesk.sources.reddit, so callers handle both
+    sources identically.
     """
     try:
         permits = fetch_recent_renovation_permits()
@@ -87,12 +97,12 @@ def find_renovation_candidates() -> list[dict]:
 
     candidates = []
     for permit in permits:
-        address = permit.get("address")
+        enrichment = {}
         try:
-            parcel = fetch_parcel_by_address(address)
+            parcel = fetch_parcel_by_pin(permit.get("pin"))
+            if parcel:
+                enrichment = parcel
         except Exception:
-            continue  # one bad address lookup shouldn't sink the whole scan
-        if not parcel or not parcel.get("pin"):
-            continue
-        candidates.append({**permit, **parcel})
+            pass  # enrichment is best-effort; the permit signal stands alone
+        candidates.append({**permit, **enrichment})
     return candidates
