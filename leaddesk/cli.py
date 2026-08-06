@@ -35,6 +35,10 @@ def cmd_run_once(_args):
     items = [i for i in items if "_error" not in i]
     for e in errors:
         print(f"      warning: {e}")
+    if not items and errors:
+        print("ERROR: no posts could be fetched from any source (network blocked or Reddit "
+              "unavailable). Leaving the website data untouched.")
+        sys.exit(2)
     fresh = [i for i in items if db.mark_seen(conn, i["item_key"])]
     print(f"      {len(items)} posts pulled, {len(fresh)} not seen before")
 
