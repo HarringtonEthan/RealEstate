@@ -114,6 +114,14 @@ RENOVATION_KEYWORDS = [
     "roof", "structural", "rehab", "gut", "interior alteration", "repair",
     "deck", "porch", "basement", "flooring",
 ]
+# Filters out permit categories the absentee-owner+valuation score would
+# otherwise mistake for a "homeowner about to sell" signal: apartment
+# complexes, commercial/institutional renovations, and other multifamily
+# work aren't a single-family buy/sell lead no matter how it scores.
+RENOVATION_EXCLUDE_KEYWORDS = [
+    "apartment", "complex", "affordable housing", "clubhouse", "leasing office",
+    "parking deck", "hotel", "dormitory", "church", "school",
+]
 RENOVATION_LOOKBACK_DAYS = 180      # matches the Raleigh feed's own window
 RENOVATION_MIN_VALUE = 10000        # ignore trivial permits (fences, water heaters)
 RENOVATION_QUALIFY_THRESHOLD = 55  # below this, not worth Diane's time

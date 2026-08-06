@@ -59,9 +59,13 @@ def fetch_recent_renovation_permits() -> list[dict]:
     keyword_clause = " OR ".join(
         f"UPPER({desc_field}) LIKE '%{kw.upper()}%'" for kw in config.RENOVATION_KEYWORDS
     )
+    exclude_clause = " OR ".join(
+        f"UPPER({desc_field}) LIKE '%{kw.upper()}%'" for kw in config.RENOVATION_EXCLUDE_KEYWORDS
+    )
     where = (
         f"{date_field} >= '{cutoff_str}' AND {value_field} >= {config.RENOVATION_MIN_VALUE} "
-        f"AND ({keyword_clause})"
+        f"AND permitclassmapped = 'Residential' AND UPPER(workclass) NOT LIKE '%NEW%' "
+        f"AND ({keyword_clause}) AND NOT ({exclude_clause})"
     )
 
     raw = _arcgis_query(config.RALEIGH_PERMITS_URL, where, n=200)
