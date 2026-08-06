@@ -1,4 +1,4 @@
-window.LEAD_DATA = {
+{
   "generated_at": "2026-08-06 23:38 UTC",
   "is_sample": false,
   "stats": {
@@ -10,4 +10,4 @@ window.LEAD_DATA = {
   "pipeline": {},
   "market_notes": [],
   "leads": []
-};
+}
