@@ -3,6 +3,9 @@ name: Probe public data sources
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -12,4 +15,17 @@ jobs:
         with:
           python-version: "3.12"
       - name: Probe Wake County / Raleigh open data
-        run: python scripts/probe_records.py
+        run: python scripts/probe_records.py > probe_output.txt 2>&1 || true
+      - name: Commit probe output
+        run: |
+          mkdir -p docs/data
+          cp probe_output.txt docs/data/probe_output.txt
+          git config user.name "lead-desk-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data/probe_output.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Probe output for schema discovery"
+            git push
+          else
+            echo "No changes to publish."
+          fi
