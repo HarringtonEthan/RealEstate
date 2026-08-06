@@ -12,14 +12,22 @@ tells Diane where to look, never that a sale is confirmed.
 
 import json
 
-from .. import db, geo, scoring_records
+from .. import config, db, geo, scoring_records
 from ..sources import wake_records
 
 
-def scan(conn) -> list[dict]:
+def scan(conn) -> tuple[list[dict], list[str]]:
     candidates = wake_records.find_renovation_candidates()
     errors = [c["_error"] for c in candidates if "_error" in c]
     candidates = [c for c in candidates if "_error" not in c]
+    warnings = list(errors)
+    if not errors and not candidates:
+        warnings.append(
+            "records scan: query succeeded but matched 0 permits in the lookback window "
+            f"({config.RENOVATION_LOOKBACK_DAYS} days, min value ${config.RENOVATION_MIN_VALUE:,}) "
+            "— this can be a genuine zero, or it can mean the field names in config.py need "
+            "correcting for the real Raleigh permits schema."
+        )
     for e in errors:
         db.log_event(conn, "source_error", agent="flip_scanner", detail={"error": e})
 
@@ -102,4 +110,4 @@ def scan(conn) -> list[dict]:
             db.log_event(conn, "lead_scored", agent="flip_scanner", lead_id=lead["lead_id"],
                          detail={"score": result["total"], "stage": stage})
             leads.append(lead)
-    return leads
+    return leads, warnings

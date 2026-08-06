@@ -12,11 +12,22 @@ ENABLE_RECORDS_SOURCE / ENABLE_MLS_SOURCE.
 
 import argparse
 import sys
+from datetime import datetime, timezone
 
 from . import brief as brief_mod
 from . import config, db, export_site
 from .agents import flip_scanner, listing_scout, qualifier, triage
 from .sources import reddit
+
+_LOG_LINES = []
+
+
+def log(msg: str = ""):
+    """Print AND remember, so run-once can leave a durable, git-committable
+    record of exactly what happened — readable without downloading Action
+    logs (see docs/data/last_run.txt after any run)."""
+    print(msg)
+    _LOG_LINES.append(msg)
 
 
 def cmd_init_db(_args):
@@ -34,76 +45,88 @@ def cmd_run_once(_args):
     step_n, total_steps = 1, sum([config.ENABLE_REDDIT_SOURCE, config.ENABLE_RECORDS_SOURCE,
                                   config.ENABLE_MLS_SOURCE]) + 2
 
+    log(f"Run started {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
+
     if config.ENABLE_REDDIT_SOURCE:
         if not config.ANTHROPIC_API_KEY:
-            print("ERROR: ANTHROPIC_API_KEY is not set (required for the Reddit intent source).")
+            log("ERROR: ANTHROPIC_API_KEY is not set (required for the Reddit intent source).")
+            _write_run_log()
             sys.exit(1)
-        print(f"[{step_n}/{total_steps}] Fetching public posts (Reddit)…")
+        log(f"[{step_n}/{total_steps}] Fetching public posts (Reddit)…")
         items = reddit.fetch_new_posts()
         errors = [i["_error"] for i in items if "_error" in i]
         items = [i for i in items if "_error" not in i]
         for e in errors:
-            print(f"      warning: {e}")
+            log(f"      warning: {e}")
         fresh = [i for i in items if db.mark_seen(conn, i["item_key"])] if items else []
-        print(f"      {len(items)} posts pulled, {len(fresh)} not seen before")
+        log(f"      {len(items)} posts pulled, {len(fresh)} not seen before")
 
         candidates = triage.triage(conn, fresh)
-        print(f"      triage kept {len(candidates)}/{len(fresh)}")
+        log(f"      triage kept {len(candidates)}/{len(fresh)}")
 
         candidates = candidates[: config.MAX_QUALIFY_PER_RUN]
         for item in candidates:
             lead = qualifier.qualify(conn, item)
             if lead and lead["stage"] in ("QUALIFIED", "HIGH_PRIORITY"):
                 qualified += 1
-                print(f"      ✓ {lead['lead_type']} · {lead.get('city') or '?'} · score {lead['lead_score']}")
+                log(f"      ✓ {lead['lead_type']} · {lead.get('city') or '?'} · score {lead['lead_score']}")
             elif lead:
-                print(f"      ✗ rejected: {lead['rejection_reason']}")
+                log(f"      ✗ rejected: {lead['rejection_reason']}")
         step_n += 1
     else:
-        print("[skipped] Reddit source is off (config.ENABLE_REDDIT_SOURCE = False)")
+        log("[skipped] Reddit source is off (config.ENABLE_REDDIT_SOURCE = False)")
 
     if config.ENABLE_RECORDS_SOURCE:
-        print(f"[{step_n}/{total_steps}] Scanning Wake County / Raleigh public records "
-              f"(free — no AI calls)…")
+        log(f"[{step_n}/{total_steps}] Scanning Wake County / Raleigh public records "
+            f"(free — no AI calls)…")
         try:
-            flip_leads = flip_scanner.scan(conn)
+            flip_leads, flip_warnings = flip_scanner.scan(conn)
+            for w in flip_warnings:
+                log(f"      warning: {w}")
             found = sum(1 for l in flip_leads if l["stage"] in ("QUALIFIED", "RESEARCHING"))
             qualified += sum(1 for l in flip_leads if l["stage"] == "QUALIFIED")
-            print(f"      {found} property signal(s) found")
+            log(f"      {found} property signal(s) found")
         except Exception as exc:
-            print(f"      warning: records scan failed ({exc}); continuing without it")
+            log(f"      warning: records scan failed ({exc}); continuing without it")
             db.log_event(conn, "agent_error", agent="flip_scanner", detail={"error": str(exc)})
         step_n += 1
 
     if config.ENABLE_MLS_SOURCE:
-        print(f"[{step_n}/{total_steps}] Reading your MLS export "
-              f"(free — no AI calls)…")
+        log(f"[{step_n}/{total_steps}] Reading your MLS export (free — no AI calls)…")
         try:
             mls_leads, mls_warnings = listing_scout.scan(conn)
             for w in mls_warnings:
-                print(f"      warning: {w}")
+                log(f"      warning: {w}")
             found = sum(1 for l in mls_leads if l["stage"] in ("QUALIFIED", "HIGH_PRIORITY"))
             qualified += found
-            print(f"      {found} expired/withdrawn listing lead(s) found")
+            log(f"      {found} expired/withdrawn listing lead(s) found")
         except Exception as exc:
-            print(f"      warning: MLS import failed ({exc}); continuing without it")
+            log(f"      warning: MLS import failed ({exc}); continuing without it")
             db.log_event(conn, "agent_error", agent="listing_scout", detail={"error": str(exc)})
         step_n += 1
 
-    print(f"[{step_n}/{total_steps}] Writing daily brief…")
+    log(f"[{step_n}/{total_steps}] Writing daily brief…")
     path = brief_mod.generate(conn)
-    print(f"      {path}")
+    log(f"      {path}")
     step_n += 1
 
-    print(f"[{step_n}/{total_steps}] Exporting website data…")
+    log(f"[{step_n}/{total_steps}] Exporting website data…")
     site = export_site.export(conn)
-    print(f"      {site}")
+    log(f"      {site}")
 
     spend = db.spend_today(conn)
-    print(f"\nDone. {qualified} qualified/high-priority lead(s) today · spend ${spend:.2f}"
-          + (f" · ${spend / qualified:.2f}/qualified lead" if qualified else ""))
+    log(f"\nDone. {qualified} qualified/high-priority lead(s) today · spend ${spend:.2f}"
+        + (f" · ${spend / qualified:.2f}/qualified lead" if qualified else ""))
     db.log_event(conn, "run_finished", agent="orchestrator",
                  detail={"qualified": qualified, "spend_usd": round(spend, 4)})
+    _write_run_log()
+
+
+def _write_run_log():
+    config.SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
+    (config.SITE_DATA_DIR / "last_run.txt").write_text(
+        "\n".join(_LOG_LINES) + "\n", encoding="utf-8"
+    )
 
 
 def cmd_brief(_args):
