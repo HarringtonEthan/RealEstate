@@ -1,4 +1,4 @@
-Run started 2026-08-06 23:42 UTC
+Run started 2026-08-06 23:52 UTC
 [skipped] Reddit source is off (config.ENABLE_REDDIT_SOURCE = False)
 [1/4] Scanning Wake County / Raleigh public records (free — no AI calls)…
       warning: wake_records: could not fetch permits (ArcGIS error: Cannot perform query. Invalid query parameters.)
