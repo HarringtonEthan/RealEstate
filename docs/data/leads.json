@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-07 00:02 UTC",
+  "generated_at": "2026-08-07 14:35 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 6,
     "high_priority": 0,
-    "reviewed_today": 200,
+    "reviewed_today": 201,
     "rejected_total": 177
   },
   "pipeline": {
     "Qualified": 6,
     "REJECTED": 177,
-    "Researching": 17
+    "Researching": 18
   },
   "market_notes": [],
   "leads": [
@@ -1207,6 +1207,58 @@
           "points": 10,
           "max": 20,
           "rationale": "permit valued at $35,500"
+        }
+      }
+    },
+    {
+      "id": "lead_8c24cb19c076",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "1505 Chester Rd, Raleigh",
+      "score": 55,
+      "confidence": "low",
+      "verification": "verified",
+      "discovered": "2026-08-07",
+      "signal_date": "1785935275",
+      "signal": "Wake County permit records show a Construction of new master bedroom addition (272 SF heated), screen porch (459 SF), and patios (154 permit ($144,256) closed at this property; county records show the owner's mailing address matches the property.",
+      "why": "A homeowner who just completed a substantial renovation sometimes lists soon after, even though this owner appears to live in the home.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-004334-2026",
+        "permit_type": "Building",
+        "permit_valuation": 144255.6,
+        "year_built": 2006,
+        "heated_area_sqft": 4804.0,
+        "assessed_value": 1907216
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 0,
+          "max": 35,
+          "rationale": "owner's mailing address matches the property \u2014 likely owner-occupied"
+        },
+        "ownership_tenure": {
+          "points": 15,
+          "max": 25,
+          "rationale": "owned about 8 months \u2014 a short hold"
+        },
+        "permit_recency": {
+          "points": 20,
+          "max": 20,
+          "rationale": "renovation permit closed about 2 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $144,256"
         }
       }
     }
