@@ -25,8 +25,12 @@ jobs:
         uses: actions/cache@v4
         with:
           path: leaddesk.db
-          key: leaddesk-db-${{ github.run_id }}
-          restore-keys: leaddesk-db-
+          # v2: bumped after fixing the renovation-permit filter (the v1
+          # cache had leads scored before new-construction/multifamily
+          # permits were excluded) — bump again any time the DB needs a
+          # clean slate instead of carrying old leads forward.
+          key: leaddesk-db-v2-${{ github.run_id }}
+          restore-keys: leaddesk-db-v2-
 
       - name: Run pipeline
         env:
