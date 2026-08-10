@@ -1,16 +1,16 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-08-09 12:00 UTC",
+  "generated_at": "2026-08-10 14:41 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 6,
     "high_priority": 0,
-    "reviewed_today": 7,
-    "rejected_total": 184
+    "reviewed_today": 9,
+    "rejected_total": 190
   },
   "pipeline": {
     "Qualified": 6,
-    "REJECTED": 184,
-    "Researching": 18
+    "REJECTED": 190,
+    "Researching": 21
   },
   "market_notes": [],
   "leads": [
@@ -587,6 +587,58 @@ window.LEAD_DATA = {
       }
     },
     {
+      "id": "lead_dfcddb384f96",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "3242 Lewis Farm Rd, Raleigh",
+      "score": 72,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-08-10",
+      "signal_date": "1774879993",
+      "signal": "Wake County permit records show a Inground heated pool with paver decking - to be fenced later.\nPlease also refer to:\nBLDR-037972-2025 permit ($100,000) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-008023-2026",
+        "permit_type": "Building",
+        "permit_valuation": 100000.0,
+        "year_built": null,
+        "heated_area_sqft": null,
+        "assessed_value": 595000
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 1.8 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 133 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $100,000"
+        }
+      }
+    },
+    {
       "id": "lead_71389255c92c",
       "sample": false,
       "author": null,
@@ -1103,6 +1155,110 @@ window.LEAD_DATA = {
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $106,928"
+        }
+      }
+    },
+    {
+      "id": "lead_ad38733ce40b",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "1417 Riverview Rd, Raleigh",
+      "score": 67,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-08-10",
+      "signal_date": "1776792383",
+      "signal": "Wake County permit records show a REF ZONE-051754-2025-Remodel after fire permit ($43,320) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-007582-2026",
+        "permit_type": "Building",
+        "permit_valuation": 43320.0,
+        "year_built": 1965,
+        "heated_area_sqft": 1797.0,
+        "assessed_value": 345413
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 5.1 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 111 days ago"
+        },
+        "permit_value": {
+          "points": 15,
+          "max": 20,
+          "rationale": "permit valued at $43,320"
+        }
+      }
+    },
+    {
+      "id": "lead_4d1621951a47",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "2200 Lawrence Dr, Raleigh",
+      "score": 62,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-08-10",
+      "signal_date": "1776431067",
+      "signal": "Wake County permit records show a Alteration of single family home to convert existing garage to bedroom, bathroom, den. Addition to c permit ($30,035) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-007550-2026",
+        "permit_type": "Building",
+        "permit_valuation": 30035.2,
+        "year_built": 1951,
+        "heated_area_sqft": 1435.0,
+        "assessed_value": 349258
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 2.4 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 115 days ago"
+        },
+        "permit_value": {
+          "points": 10,
+          "max": 20,
+          "rationale": "permit valued at $30,035"
         }
       }
     },
