@@ -1,16 +1,16 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-08-12 14:42 UTC",
+  "generated_at": "2026-08-14 14:33 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 6,
     "high_priority": 0,
-    "reviewed_today": 8,
-    "rejected_total": 202
+    "reviewed_today": 10,
+    "rejected_total": 210
   },
   "pipeline": {
     "Qualified": 6,
-    "REJECTED": 202,
-    "Researching": 21
+    "REJECTED": 210,
+    "Researching": 23
   },
   "market_notes": [],
   "leads": [
@@ -587,6 +587,58 @@ window.LEAD_DATA = {
       }
     },
     {
+      "id": "lead_2ec22f10d3fc",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "728 1/2 Powell Dr, Raleigh",
+      "score": 72,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-08-14",
+      "signal_date": "1776779019",
+      "signal": "Wake County permit records show a Construction of addition. Garage with breezeway attached to the main dwelling permit ($83,030) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-009122-2026",
+        "permit_type": "Building",
+        "permit_valuation": 83030.0,
+        "year_built": null,
+        "heated_area_sqft": null,
+        "assessed_value": 99000
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 1.8 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 115 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $83,030"
+        }
+      }
+    },
+    {
       "id": "lead_dfcddb384f96",
       "sample": false,
       "author": null,
@@ -1155,6 +1207,58 @@ window.LEAD_DATA = {
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $106,928"
+        }
+      }
+    },
+    {
+      "id": "lead_e12968338b93",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "204 Selwyn Aly, Raleigh",
+      "score": 67,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-08-14",
+      "signal_date": "1779108415",
+      "signal": "Wake County permit records show a Fire damage to dwelling requires repairs to the drywall, siding, flooring, insulation, paint and ele permit ($32,490) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-009230-2026",
+        "permit_type": "Building",
+        "permit_valuation": 32490.0,
+        "year_built": 1984,
+        "heated_area_sqft": 1144.0,
+        "assessed_value": 396154
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 20.9 years"
+        },
+        "permit_recency": {
+          "points": 10,
+          "max": 20,
+          "rationale": "renovation permit closed about 88 days ago"
+        },
+        "permit_value": {
+          "points": 10,
+          "max": 20,
+          "rationale": "permit valued at $32,490"
         }
       }
     },
