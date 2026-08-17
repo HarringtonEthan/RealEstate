@@ -1,16 +1,16 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-08-16 11:41 UTC",
+  "generated_at": "2026-08-17 11:53 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 6,
     "high_priority": 0,
-    "reviewed_today": 3,
-    "rejected_total": 213
+    "reviewed_today": 9,
+    "rejected_total": 219
   },
   "pipeline": {
     "Qualified": 6,
-    "REJECTED": 213,
-    "Researching": 23
+    "REJECTED": 219,
+    "Researching": 26
   },
   "market_notes": [],
   "leads": [
@@ -583,6 +583,110 @@ window.LEAD_DATA = {
           "points": 10,
           "max": 20,
           "rationale": "permit valued at $23,248"
+        }
+      }
+    },
+    {
+      "id": "lead_b3091d25806d",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "515 Hoke St, Raleigh",
+      "score": 72,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-08-17",
+      "signal_date": "1773680425",
+      "signal": "Wake County permit records show a Duplex- Electrical rewire, HVAC install, plumbing re-piping and replace drywall and flooring. .Remov permit ($135,014) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-009930-2026",
+        "permit_type": "Building",
+        "permit_valuation": 135014.0,
+        "year_built": 1983,
+        "heated_area_sqft": 1728.0,
+        "assessed_value": 345776
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 19.5 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 154 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $135,014"
+        }
+      }
+    },
+    {
+      "id": "lead_fa8d799551bc",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "513 Hoke St, Raleigh",
+      "score": 72,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-08-17",
+      "signal_date": "1773680412",
+      "signal": "Wake County permit records show a Electrical rewire, HVAC install, Plumbing re-piping and replace drywall and flooring. Duplex permit ($135,014) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-009907-2026",
+        "permit_type": "Building",
+        "permit_valuation": 135014.0,
+        "year_built": 1983,
+        "heated_area_sqft": 1728.0,
+        "assessed_value": 345776
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 20.5 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 154 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $135,014"
         }
       }
     },
@@ -1311,6 +1415,58 @@ window.LEAD_DATA = {
           "points": 15,
           "max": 20,
           "rationale": "permit valued at $43,320"
+        }
+      }
+    },
+    {
+      "id": "lead_8cef87e8dbaa",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "2357 Millbank St, Raleigh",
+      "score": 62,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-08-17",
+      "signal_date": "1773747311",
+      "signal": "Wake County permit records show a Putting a shingled roof on a existing deck 16 x 10. permit ($13,000) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-010036-2026",
+        "permit_type": "Building",
+        "permit_valuation": 13000.0,
+        "year_built": 1957,
+        "heated_area_sqft": 1554.0,
+        "assessed_value": 449744
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 7.2 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 153 days ago"
+        },
+        "permit_value": {
+          "points": 10,
+          "max": 20,
+          "rationale": "permit valued at $13,000"
         }
       }
     },
