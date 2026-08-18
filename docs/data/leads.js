@@ -1,16 +1,16 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-08-17 11:53 UTC",
+  "generated_at": "2026-08-18 11:54 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 6,
     "high_priority": 0,
-    "reviewed_today": 9,
-    "rejected_total": 219
+    "reviewed_today": 7,
+    "rejected_total": 225
   },
   "pipeline": {
     "Qualified": 6,
-    "REJECTED": 219,
-    "Researching": 26
+    "REJECTED": 225,
+    "Researching": 27
   },
   "market_notes": [],
   "leads": [
@@ -583,6 +583,58 @@ window.LEAD_DATA = {
           "points": 10,
           "max": 20,
           "rationale": "permit valued at $23,248"
+        }
+      }
+    },
+    {
+      "id": "lead_9130ded26830",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "1801 Summerdale Dr, Raleigh",
+      "score": 72,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-08-18",
+      "signal_date": "1775837295",
+      "signal": "Wake County permit records show a 4 units: 1801-1803-1805-1807 Summerdale Dr;  Interior renovation. Existing drywall and insulation to permit ($161,064) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-010409-2026",
+        "permit_type": "Building",
+        "permit_valuation": 161064.48,
+        "year_built": 1986,
+        "heated_area_sqft": 4912.0,
+        "assessed_value": 513743
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 34.3 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 130 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $161,064"
         }
       }
     },
