@@ -1,16 +1,16 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-08-20 11:58 UTC",
+  "generated_at": "2026-08-21 11:57 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 6,
     "high_priority": 0,
-    "reviewed_today": 6,
+    "reviewed_today": 1,
     "rejected_total": 236
   },
   "pipeline": {
     "Qualified": 6,
     "REJECTED": 236,
-    "Researching": 27
+    "Researching": 28
   },
   "market_notes": [],
   "leads": [
@@ -1675,6 +1675,58 @@ window.LEAD_DATA = {
           "points": 10,
           "max": 20,
           "rationale": "permit valued at $35,500"
+        }
+      }
+    },
+    {
+      "id": "lead_2f9e012205f3",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "1200 Gunnison Pl, Raleigh",
+      "score": 55,
+      "confidence": "low",
+      "verification": "verified",
+      "discovered": "2026-08-21",
+      "signal_date": "1787124804",
+      "signal": "Wake County permit records show a Addition of Garage, Master Suite, Din/Liv Room, Screen Porch, Half Bath, Remodel Kitchen, Move Elect permit ($385,692) closed at this property; county records show the owner's mailing address matches the property.",
+      "why": "A homeowner who just completed a substantial renovation sometimes lists soon after, even though this owner appears to live in the home.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-040665-2025",
+        "permit_type": "Building",
+        "permit_valuation": 385692.4,
+        "year_built": 1963,
+        "heated_area_sqft": 2730.0,
+        "assessed_value": 732353
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 0,
+          "max": 35,
+          "rationale": "owner's mailing address matches the property \u2014 likely owner-occupied"
+        },
+        "ownership_tenure": {
+          "points": 15,
+          "max": 25,
+          "rationale": "owned about 13 months \u2014 a short hold"
+        },
+        "permit_recency": {
+          "points": 20,
+          "max": 20,
+          "rationale": "renovation permit closed about 2 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $385,692"
         }
       }
     },
