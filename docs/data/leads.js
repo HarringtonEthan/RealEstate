@@ -1,15 +1,15 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-08-21 11:57 UTC",
+  "generated_at": "2026-08-22 11:41 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 6,
     "high_priority": 0,
     "reviewed_today": 1,
-    "rejected_total": 236
+    "rejected_total": 237
   },
   "pipeline": {
     "Qualified": 6,
-    "REJECTED": 236,
+    "REJECTED": 237,
     "Researching": 28
   },
   "market_notes": [],
