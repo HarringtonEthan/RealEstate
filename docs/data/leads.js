@@ -1,16 +1,16 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-08-24 11:17 UTC",
+  "generated_at": "2026-08-25 11:15 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 6,
     "high_priority": 0,
-    "reviewed_today": 15,
-    "rejected_total": 252
+    "reviewed_today": 9,
+    "rejected_total": 259
   },
   "pipeline": {
     "Qualified": 6,
-    "REJECTED": 252,
-    "Researching": 28
+    "REJECTED": 259,
+    "Researching": 30
   },
   "market_notes": [],
   "leads": [
@@ -375,6 +375,58 @@ window.LEAD_DATA = {
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $211,257"
+        }
+      }
+    },
+    {
+      "id": "lead_c7d5f2816acd",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "3624 Singleleaf Ln, Raleigh",
+      "score": 75,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-08-25",
+      "signal_date": "1774463349",
+      "signal": "Wake County permit records show a Remove and replace 9 windows like for like no structural changes. permit ($10,413) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-012054-2026",
+        "permit_type": "Building",
+        "permit_valuation": 10413.0,
+        "year_built": 1993,
+        "heated_area_sqft": 1695.0,
+        "assessed_value": 368275
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 25,
+          "max": 25,
+          "rationale": "owned about 14 months \u2014 a short hold"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 153 days ago"
+        },
+        "permit_value": {
+          "points": 10,
+          "max": 20,
+          "rationale": "permit valued at $10,413"
         }
       }
     },
@@ -1363,6 +1415,58 @@ window.LEAD_DATA = {
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $106,928"
+        }
+      }
+    },
+    {
+      "id": "lead_27a2a739f912",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "103 Summit Ave, Raleigh",
+      "score": 67,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-08-25",
+      "signal_date": "1776084970",
+      "signal": "Wake County permit records show a REF ZONE-057681-2025 -WE WILL BE REMODELING THE ENTIRE PROPERTY DUE TO FIRE DAMAGE WHICH IS A TOTAL permit ($53,139) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-012188-2026",
+        "permit_type": "Building",
+        "permit_valuation": 53139.2,
+        "year_built": 1909,
+        "heated_area_sqft": 1472.0,
+        "assessed_value": 512602
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 4.8 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 134 days ago"
+        },
+        "permit_value": {
+          "points": 15,
+          "max": 20,
+          "rationale": "permit valued at $53,139"
         }
       }
     },
