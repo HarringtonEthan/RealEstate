@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-28 21:17 UTC",
+  "generated_at": "2026-08-29 15:22 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 7,
     "high_priority": 0,
-    "reviewed_today": 1,
+    "reviewed_today": 0,
     "rejected_total": 274
   },
   "pipeline": {
