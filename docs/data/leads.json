@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-06 13:50 UTC",
+  "generated_at": "2026-09-07 16:09 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 8,
     "high_priority": 0,
-    "reviewed_today": 5,
-    "rejected_total": 295
+    "reviewed_today": 3,
+    "rejected_total": 297
   },
   "pipeline": {
     "Qualified": 8,
-    "REJECTED": 295,
-    "Researching": 31
+    "REJECTED": 297,
+    "Researching": 32
   },
   "market_notes": [],
   "leads": [
@@ -479,6 +479,58 @@
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $211,257"
+        }
+      }
+    },
+    {
+      "id": "lead_3e4bc5715874",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "4804 Deerwood Dr, Raleigh",
+      "score": 75,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-09-07",
+      "signal_date": "1777913352",
+      "signal": "Wake County permit records show a New one story pool house with bath room and 4ft retaining walls , pool decking (no bedroom) permit ($20,012) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-014414-2026",
+        "permit_type": "Building",
+        "permit_valuation": 20011.62,
+        "year_built": 2025,
+        "heated_area_sqft": 3890.0,
+        "assessed_value": 1173722
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 25,
+          "max": 25,
+          "rationale": "owned about 13 months \u2014 a short hold"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 126 days ago"
+        },
+        "permit_value": {
+          "points": 10,
+          "max": 20,
+          "rationale": "permit valued at $20,012"
         }
       }
     },
