@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-07 16:09 UTC",
+  "generated_at": "2026-09-08 14:49 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 8,
     "high_priority": 0,
-    "reviewed_today": 3,
-    "rejected_total": 297
+    "reviewed_today": 6,
+    "rejected_total": 301
   },
   "pipeline": {
     "Qualified": 8,
-    "REJECTED": 297,
-    "Researching": 32
+    "REJECTED": 301,
+    "Researching": 34
   },
   "market_notes": [],
   "leads": [
@@ -1779,6 +1779,110 @@
           "points": 15,
           "max": 20,
           "rationale": "permit valued at $43,320"
+        }
+      }
+    },
+    {
+      "id": "lead_27ad2bf4fca6",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "1304 E Jones St, Raleigh",
+      "score": 62,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-09-08",
+      "signal_date": "1778783061",
+      "signal": "Wake County permit records show a Remove a 14.8 x 21.5' addition from the west side of the house, excavate and backfill footers. Repa permit ($18,000) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-014582-2026",
+        "permit_type": "Building",
+        "permit_valuation": 18000.0,
+        "year_built": 1952,
+        "heated_area_sqft": 1335.0,
+        "assessed_value": 297270
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 2.4 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 117 days ago"
+        },
+        "permit_value": {
+          "points": 10,
+          "max": 20,
+          "rationale": "permit valued at $18,000"
+        }
+      }
+    },
+    {
+      "id": "lead_84b9dd7c1484",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "8409 Two Courts, Raleigh",
+      "score": 62,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-09-08",
+      "signal_date": "1776443954",
+      "signal": "Wake County permit records show a 13.9\u2019 x 20\u2019 open deck on rear of house, first floor, 5\u2019 tall off the ground, no roof, with stairs le permit ($17,923) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-014812-2026",
+        "permit_type": "Building",
+        "permit_valuation": 17923.0,
+        "year_built": 1980,
+        "heated_area_sqft": 3633.0,
+        "assessed_value": 680342
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 11.9 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 144 days ago"
+        },
+        "permit_value": {
+          "points": 10,
+          "max": 20,
+          "rationale": "permit valued at $17,923"
         }
       }
     },
