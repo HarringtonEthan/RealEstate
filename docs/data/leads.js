@@ -1,16 +1,16 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-09-10 14:41 UTC",
+  "generated_at": "2026-09-11 14:40 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 8,
     "high_priority": 0,
-    "reviewed_today": 8,
-    "rejected_total": 314
+    "reviewed_today": 3,
+    "rejected_total": 316
   },
   "pipeline": {
     "Qualified": 8,
-    "REJECTED": 314,
-    "Researching": 36
+    "REJECTED": 316,
+    "Researching": 37
   },
   "market_notes": [],
   "leads": [
@@ -2195,6 +2195,58 @@ window.LEAD_DATA = {
           "points": 10,
           "max": 20,
           "rationale": "permit valued at $35,500"
+        }
+      }
+    },
+    {
+      "id": "lead_120c1c45186b",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "7712 Harps Mill Rd, Raleigh",
+      "score": 55,
+      "confidence": "low",
+      "verification": "verified",
+      "discovered": "2026-09-11",
+      "signal_date": "1788973270",
+      "signal": "Wake County permit records show a PROPOSED DEMO TO REAR PORCH OF EXISTING SFD TO ADD ADDITIONAL SQUARE FOOTAGE TO THE HOME. RENOVATION permit ($1,266,280) closed at this property; county records show the owner's mailing address matches the property.",
+      "why": "A homeowner who just completed a substantial renovation sometimes lists soon after, even though this owner appears to live in the home.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-001004-2026",
+        "permit_type": "Building",
+        "permit_valuation": 1266279.7,
+        "year_built": 2002,
+        "heated_area_sqft": 9047.0,
+        "assessed_value": 3506124
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 0,
+          "max": 35,
+          "rationale": "owner's mailing address matches the property \u2014 likely owner-occupied"
+        },
+        "ownership_tenure": {
+          "points": 15,
+          "max": 25,
+          "rationale": "owned about 18 months \u2014 a short hold"
+        },
+        "permit_recency": {
+          "points": 20,
+          "max": 20,
+          "rationale": "renovation permit closed about 2 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $1,266,280"
         }
       }
     },
