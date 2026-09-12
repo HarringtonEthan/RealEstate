@@ -1,15 +1,15 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-09-11 14:40 UTC",
+  "generated_at": "2026-09-12 13:47 UTC",
   "is_sample": false,
   "stats": {
-    "qualified": 8,
+    "qualified": 10,
     "high_priority": 0,
     "reviewed_today": 3,
-    "rejected_total": 316
+    "rejected_total": 317
   },
   "pipeline": {
-    "Qualified": 8,
-    "REJECTED": 316,
+    "Qualified": 10,
+    "REJECTED": 317,
     "Researching": 37
   },
   "market_notes": [],
@@ -63,6 +63,58 @@ window.LEAD_DATA = {
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $158,010"
+        }
+      }
+    },
+    {
+      "id": "lead_70634c434614",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "QUALIFIED",
+      "stage_label": "Qualified",
+      "location": "4404 Irving Ct, Raleigh",
+      "score": 87,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-09-12",
+      "signal_date": "1789053852",
+      "signal": "Wake County permit records show a Attached Garage\nNote: Customer stated that he is not permitting deck at this time. permit ($111,188) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-038174-2025",
+        "permit_type": "Building",
+        "permit_valuation": 111188.0,
+        "year_built": 1972,
+        "heated_area_sqft": 3320.0,
+        "assessed_value": 620164
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 1.6 years"
+        },
+        "permit_recency": {
+          "points": 20,
+          "max": 20,
+          "rationale": "renovation permit closed about 2 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $111,188"
         }
       }
     },
@@ -375,6 +427,58 @@ window.LEAD_DATA = {
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $101,080"
+        }
+      }
+    },
+    {
+      "id": "lead_507aa1009ab7",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "QUALIFIED",
+      "stage_label": "Qualified",
+      "location": "1409 Lions Way, Raleigh",
+      "score": 80,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-09-12",
+      "signal_date": "1776947659",
+      "signal": "Wake County permit records show a Repair and reroute plumbing post flood. Remove interior load bearing wall. Relocate kitchen. Relocat permit ($45,000) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-015447-2026",
+        "permit_type": "Building",
+        "permit_valuation": 45000.0,
+        "year_built": 1972,
+        "heated_area_sqft": 2021.0,
+        "assessed_value": 808951
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 25,
+          "max": 25,
+          "rationale": "owned about 8 months \u2014 a short hold"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 142 days ago"
+        },
+        "permit_value": {
+          "points": 15,
+          "max": 20,
+          "rationale": "permit valued at $45,000"
         }
       }
     },
