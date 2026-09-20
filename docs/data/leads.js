@@ -1,16 +1,16 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-09-19 14:02 UTC",
+  "generated_at": "2026-09-20 14:22 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 10,
     "high_priority": 0,
-    "reviewed_today": 0,
-    "rejected_total": 349
+    "reviewed_today": 4,
+    "rejected_total": 352
   },
   "pipeline": {
     "Qualified": 10,
-    "REJECTED": 349,
-    "Researching": 38
+    "REJECTED": 352,
+    "Researching": 39
   },
   "market_notes": [],
   "leads": [
@@ -947,6 +947,58 @@ window.LEAD_DATA = {
           "points": 10,
           "max": 20,
           "rationale": "permit valued at $23,248"
+        }
+      }
+    },
+    {
+      "id": "lead_0fa7ae0f14ad",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "4002 The Oaks Dr, Raleigh",
+      "score": 72,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-09-20",
+      "signal_date": "1779150610",
+      "signal": "Wake County permit records show a repair water damage, remove non bearing walls, rewire kitchen, new water supply lines, rework drain permit ($137,180) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-016654-2026",
+        "permit_type": "Building",
+        "permit_valuation": 137180.0,
+        "year_built": null,
+        "heated_area_sqft": null,
+        "assessed_value": 0
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 42.4 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 125 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $137,180"
         }
       }
     },
