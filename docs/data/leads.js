@@ -1,5 +1,5 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-10-02 16:23 UTC",
+  "generated_at": "2026-10-03 14:58 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 10,
