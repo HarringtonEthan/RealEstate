@@ -1,16 +1,16 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-10-11 17:50 UTC",
+  "generated_at": "2026-10-12 20:01 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 12,
     "high_priority": 0,
-    "reviewed_today": 8,
-    "rejected_total": 410
+    "reviewed_today": 6,
+    "rejected_total": 415
   },
   "pipeline": {
     "Qualified": 12,
-    "REJECTED": 410,
-    "Researching": 39
+    "REJECTED": 415,
+    "Researching": 40
   },
   "market_notes": [],
   "leads": [
@@ -687,6 +687,58 @@ window.LEAD_DATA = {
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $211,257"
+        }
+      }
+    },
+    {
+      "id": "lead_4f19998539fc",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "7805 Haymarket Ln, Raleigh",
+      "score": 75,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-10-12",
+      "signal_date": "1780437069",
+      "signal": "Wake County permit records show a Build deck. 16x18 ft with ramp. permit ($12,000) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-020497-2026",
+        "permit_type": "Building",
+        "permit_valuation": 12000.0,
+        "year_built": 1972,
+        "heated_area_sqft": 2178.0,
+        "assessed_value": 596163
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 25,
+          "max": 25,
+          "rationale": "owned about 10 months \u2014 a short hold"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 132 days ago"
+        },
+        "permit_value": {
+          "points": 10,
+          "max": 20,
+          "rationale": "permit valued at $12,000"
         }
       }
     },
