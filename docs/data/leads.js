@@ -1,15 +1,15 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-10-12 20:01 UTC",
+  "generated_at": "2026-10-13 17:51 UTC",
   "is_sample": false,
   "stats": {
-    "qualified": 12,
+    "qualified": 14,
     "high_priority": 0,
-    "reviewed_today": 6,
-    "rejected_total": 415
+    "reviewed_today": 11,
+    "rejected_total": 424
   },
   "pipeline": {
-    "Qualified": 12,
-    "REJECTED": 415,
+    "Qualified": 14,
+    "REJECTED": 424,
     "Researching": 40
   },
   "market_notes": [],
@@ -479,6 +479,110 @@ window.LEAD_DATA = {
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $101,080"
+        }
+      }
+    },
+    {
+      "id": "lead_a2f9fbbfc305",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "QUALIFIED",
+      "stage_label": "Qualified",
+      "location": "1700 St Marys St, Raleigh",
+      "score": 80,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-10-13",
+      "signal_date": "1782158619",
+      "signal": "Wake County permit records show a Addition of exterior fireplace off of the existing covered porch. Extend kitchen bump out on left si permit ($72,489) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-020486-2026",
+        "permit_type": "Building",
+        "permit_valuation": 72488.8,
+        "year_built": 1927,
+        "heated_area_sqft": 3031.0,
+        "assessed_value": 1314612
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 25,
+          "max": 25,
+          "rationale": "owned about 12 months \u2014 a short hold"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 113 days ago"
+        },
+        "permit_value": {
+          "points": 15,
+          "max": 20,
+          "rationale": "permit valued at $72,489"
+        }
+      }
+    },
+    {
+      "id": "lead_972a57567282",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "QUALIFIED",
+      "stage_label": "Qualified",
+      "location": "1320 Oakwood Ave, Raleigh",
+      "score": 80,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-10-13",
+      "signal_date": "1779293541",
+      "signal": "Wake County permit records show a Modify layout to accommodate a new bathroom, laundry room, master bedroom , and redesign kitchen. Th permit ($66,424) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-021001-2026",
+        "permit_type": "Building",
+        "permit_valuation": 66424.0,
+        "year_built": 1915,
+        "heated_area_sqft": 939.0,
+        "assessed_value": 243848
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 25,
+          "max": 25,
+          "rationale": "owned about 8 months \u2014 a short hold"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 146 days ago"
+        },
+        "permit_value": {
+          "points": 15,
+          "max": 20,
+          "rationale": "permit valued at $66,424"
         }
       }
     },
