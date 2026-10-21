@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-20 15:25 UTC",
+  "generated_at": "2026-10-21 15:42 UTC",
   "is_sample": false,
   "stats": {
-    "qualified": 15,
+    "qualified": 16,
     "high_priority": 0,
-    "reviewed_today": 3,
-    "rejected_total": 450
+    "reviewed_today": 6,
+    "rejected_total": 454
   },
   "pipeline": {
-    "Qualified": 15,
-    "REJECTED": 450,
-    "Researching": 41
+    "Qualified": 16,
+    "REJECTED": 454,
+    "Researching": 42
   },
   "market_notes": [],
   "leads": [
@@ -531,6 +531,58 @@
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $101,080"
+        }
+      }
+    },
+    {
+      "id": "lead_75c339762b36",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "QUALIFIED",
+      "stage_label": "Qualified",
+      "location": "2105 Cook Ridge Ct, Raleigh",
+      "score": 82,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-10-21",
+      "signal_date": "1787655669",
+      "signal": "Wake County permit records show a Add screen porch over existing deck permit ($100,000) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-022105-2026",
+        "permit_type": "Building",
+        "permit_valuation": 100000.0,
+        "year_built": 2022,
+        "heated_area_sqft": 4113.0,
+        "assessed_value": 1361459
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 20.8 years"
+        },
+        "permit_recency": {
+          "points": 15,
+          "max": 20,
+          "rationale": "renovation permit closed about 57 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $100,000"
         }
       }
     },
@@ -2403,6 +2455,58 @@
           "points": 15,
           "max": 20,
           "rationale": "permit valued at $43,320"
+        }
+      }
+    },
+    {
+      "id": "lead_75d96c9cde60",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "1302 Mordecai Dr, Raleigh",
+      "score": 62,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-10-21",
+      "signal_date": "1784726893",
+      "signal": "Wake County permit records show a Construct detached carport with storage room. added deck permit ($20,464) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-022303-2026",
+        "permit_type": "Building",
+        "permit_valuation": 20463.86,
+        "year_built": 2025,
+        "heated_area_sqft": null,
+        "assessed_value": 554700
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 1.8 years"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 91 days ago"
+        },
+        "permit_value": {
+          "points": 10,
+          "max": 20,
+          "rationale": "permit valued at $20,464"
         }
       }
     },
