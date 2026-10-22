@@ -1,15 +1,15 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-10-21 15:42 UTC",
+  "generated_at": "2026-10-22 15:42 UTC",
   "is_sample": false,
   "stats": {
-    "qualified": 16,
+    "qualified": 17,
     "high_priority": 0,
-    "reviewed_today": 6,
-    "rejected_total": 454
+    "reviewed_today": 5,
+    "rejected_total": 458
   },
   "pipeline": {
-    "Qualified": 16,
-    "REJECTED": 454,
+    "Qualified": 17,
+    "REJECTED": 458,
     "Researching": 42
   },
   "market_notes": [],
@@ -115,6 +115,58 @@ window.LEAD_DATA = {
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $111,188"
+        }
+      }
+    },
+    {
+      "id": "lead_d25520d60ad8",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "QUALIFIED",
+      "stage_label": "Qualified",
+      "location": "703 Dorothea Dr, Raleigh",
+      "score": 85,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-10-22",
+      "signal_date": "1779394152",
+      "signal": "Wake County permit records show a Renovation of an existing 3-bedroom, 2.5-bathroom single-family residential home. No changes to abov permit ($188,334) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-022220-2026",
+        "permit_type": "Building",
+        "permit_valuation": 188333.7,
+        "year_built": 1932,
+        "heated_area_sqft": 1739.0,
+        "assessed_value": 550716
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 25,
+          "max": 25,
+          "rationale": "owned about 7 months \u2014 a short hold"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 154 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $188,334"
         }
       }
     },
