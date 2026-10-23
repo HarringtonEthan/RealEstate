@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-10-22 15:42 UTC",
+  "generated_at": "2026-10-23 15:30 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 17,
     "high_priority": 0,
-    "reviewed_today": 5,
-    "rejected_total": 458
+    "reviewed_today": 1,
+    "rejected_total": 459
   },
   "pipeline": {
     "Qualified": 17,
-    "REJECTED": 458,
+    "REJECTED": 459,
     "Researching": 42
   },
   "market_notes": [],
