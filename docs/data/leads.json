@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-10 18:21 UTC",
+  "generated_at": "2026-11-11 18:10 UTC",
   "is_sample": false,
   "stats": {
-    "qualified": 19,
+    "qualified": 20,
     "high_priority": 0,
-    "reviewed_today": 3,
-    "rejected_total": 514
+    "reviewed_today": 2,
+    "rejected_total": 515
   },
   "pipeline": {
-    "Qualified": 19,
-    "REJECTED": 514,
+    "Qualified": 20,
+    "REJECTED": 515,
     "Researching": 44
   },
   "market_notes": [],
@@ -63,6 +63,58 @@
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $158,010"
+        }
+      }
+    },
+    {
+      "id": "lead_5c68e8976569",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "QUALIFIED",
+      "stage_label": "Qualified",
+      "location": "1319 Chester Rd, Raleigh",
+      "score": 87,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-11-11",
+      "signal_date": "1794237802",
+      "signal": "Wake County permit records show a Townhomes, 4 units, Lots 1319-1325, 3 stories, rooftop patio, SPR-0315-2025; \nElevator doors open in permit ($476,087) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-024852-2026",
+        "permit_type": "Building",
+        "permit_valuation": 476086.8,
+        "year_built": null,
+        "heated_area_sqft": null,
+        "assessed_value": 700000
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 12,
+          "max": 25,
+          "rationale": "owned about 1.6 years"
+        },
+        "permit_recency": {
+          "points": 20,
+          "max": 20,
+          "rationale": "renovation permit closed about 2 days ago"
+        },
+        "permit_value": {
+          "points": 20,
+          "max": 20,
+          "rationale": "permit valued at $476,087"
         }
       }
     },
