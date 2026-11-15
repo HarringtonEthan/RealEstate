@@ -1,16 +1,16 @@
 window.LEAD_DATA = {
-  "generated_at": "2026-11-14 16:46 UTC",
+  "generated_at": "2026-11-15 17:28 UTC",
   "is_sample": false,
   "stats": {
     "qualified": 20,
     "high_priority": 0,
-    "reviewed_today": 1,
-    "rejected_total": 519
+    "reviewed_today": 6,
+    "rejected_total": 524
   },
   "pipeline": {
     "Qualified": 20,
-    "REJECTED": 519,
-    "Researching": 45
+    "REJECTED": 524,
+    "Researching": 46
   },
   "market_notes": [],
   "leads": [
@@ -1103,6 +1103,58 @@ window.LEAD_DATA = {
           "points": 20,
           "max": 20,
           "rationale": "permit valued at $211,257"
+        }
+      }
+    },
+    {
+      "id": "lead_67dabe309804",
+      "sample": false,
+      "author": null,
+      "type": "renovation_watch",
+      "type_label": "Renovation watch",
+      "stage": "RESEARCHING",
+      "stage_label": "Researching",
+      "location": "13022 Edsel Dr, Raleigh",
+      "score": 75,
+      "confidence": "medium",
+      "verification": "verified",
+      "discovered": "2026-11-15",
+      "signal_date": "1781023874",
+      "signal": "Wake County permit records show a Foundation repair using the installation of 4 helical piers. permit ($14,760) closed at this property; the owner's mailing address is different from the property, suggesting an investor or rental owner.",
+      "why": "A real, recent renovation on a home the owner doesn't appear to live in is a classic pattern that precedes a sale or a rental turnover \u2014 worth a look before it's listed.",
+      "next_action": "Check whether this address is already listed or recently sold. If not, this is a candidate to bring to a buyer client (a freshly renovated home that may hit the market soon) or an owner worth reaching out to about future listing representation. This is a pattern from public records, not a confirmed intent to sell \u2014 verify independently before acting on it.",
+      "source": "Wake County / Raleigh public permit & tax records",
+      "source_url": null,
+      "timeframe": "",
+      "budget": "",
+      "property_info": {
+        "permit_number": "BLDR-025564-2026",
+        "permit_type": "Building",
+        "permit_valuation": 14759.75,
+        "year_built": 2009,
+        "heated_area_sqft": 3658.0,
+        "assessed_value": 745389
+      },
+      "score_breakdown": {
+        "absentee_owner": {
+          "points": 35,
+          "max": 35,
+          "rationale": "owner's mailing address differs from the property \u2014 likely an investor or rental owner"
+        },
+        "ownership_tenure": {
+          "points": 25,
+          "max": 25,
+          "rationale": "owned about 7 months \u2014 a short hold"
+        },
+        "permit_recency": {
+          "points": 5,
+          "max": 20,
+          "rationale": "renovation permit closed about 159 days ago"
+        },
+        "permit_value": {
+          "points": 10,
+          "max": 20,
+          "rationale": "permit valued at $14,760"
         }
       }
     },
